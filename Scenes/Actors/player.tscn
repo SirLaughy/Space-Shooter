@@ -1,0 +1,246 @@
+[gd_scene load_steps=9 format=3 uid="uid://br0e7vsq5b2ny"]
+
+[ext_resource type="Script" uid="uid://dkduf4jjrhm4q" path="res://Scripts/Actors/player.gd" id="1_lm2ka"]
+[ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="1_nikbh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lm2ka"]
+size = Vector2(3, 3)
+
+[sub_resource type="Animation" id="Animation_nikbh"]
+resource_name = "shoot"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon/Muzzle/MuzzleSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.14843753, 0.101562515), Vector2(0.09374999, 0.12499999)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_lm2ka"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon/Muzzle/MuzzleSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.14843753, 0.101562515)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Thrusters/LeftSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Thrusters/RightSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wn7ci"]
+resource_name = "damage_taken"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15246084, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.46176082, 0.045681752, 0.045668215, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sfcrp"]
+resource_name = "death"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10164056, 0.3997862),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b2ja5"]
+_data = {
+&"RESET": SubResource("Animation_lm2ka"),
+&"damage_taken": SubResource("Animation_wn7ci"),
+&"death": SubResource("Animation_sfcrp"),
+&"shoot": SubResource("Animation_nikbh")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 3
+collision_mask = 0
+script = ExtResource("1_lm2ka")
+horizontal_acceleration = 1000.0
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+modulate = Color(0.5609549, 0.5609549, 0.5609549, 1)
+position = Vector2(0, -18.5)
+scale = Vector2(1, 1.5)
+texture = ExtResource("1_nikbh")
+hframes = 8
+vframes = 8
+
+[node name="PlayerShape" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -67, 32, 29, -32, 29)
+
+[node name="Thrusters" type="Node2D" parent="."]
+modulate = Color(0.72464263, 0.7246426, 0.7246426, 1)
+
+[node name="LeftSprite" type="Sprite2D" parent="Thrusters"]
+position = Vector2(-32, 20.6875)
+scale = Vector2(0.18750001, 0.39648435)
+texture = ExtResource("1_nikbh")
+hframes = 8
+vframes = 8
+
+[node name="RightSprite" type="Sprite2D" parent="Thrusters"]
+position = Vector2(32, 20.688)
+scale = Vector2(0.188, 0.396)
+texture = ExtResource("1_nikbh")
+hframes = 8
+vframes = 8
+
+[node name="Weapon" type="Node2D" parent="."]
+modulate = Color(0.78352344, 0.7835234, 0.7835234, 1)
+z_index = 5
+
+[node name="BarrelSprite" type="Sprite2D" parent="Weapon"]
+position = Vector2(1.9073486e-06, -19)
+scale = Vector2(0.109375, 0.734375)
+texture = ExtResource("1_nikbh")
+hframes = 8
+vframes = 8
+frame = 2
+
+[node name="Muzzle" type="Area2D" parent="Weapon"]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="MuzzleSprite" type="Sprite2D" parent="Weapon/Muzzle"]
+position = Vector2(-1.7881393e-07, -40)
+scale = Vector2(0.14843753, 0.101562515)
+texture = ExtResource("1_nikbh")
+hframes = 8
+vframes = 8
+frame = 4
+
+[node name="MuzzleShape" type="CollisionShape2D" parent="Weapon/Muzzle"]
+position = Vector2(0, -38)
+shape = SubResource("RectangleShape2D_lm2ka")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_b2ja5")
+}
+autoplay = "shoot"
