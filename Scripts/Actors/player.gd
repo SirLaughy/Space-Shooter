@@ -1,35 +1,39 @@
 extends CharacterBody2D
 
-const PLAYER_WIDTH = 64.0
+@export var horizontal_acceleration: float
+@export var vertical_acceleration: float
+@export var firing_speed: float
+@export var bullet_speed: float
 
-@export var horizontal_acceleration : float = 100
-@export var firing_rate : float = 1.0
-
-@onready var left_sprite: Sprite2D = $Thrusters/LeftSprite
-@onready var right_sprite: Sprite2D = $Thrusters/RightSprite
-@onready var muzzle: Area2D = $Weapon/Muzzle
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var bullet_timer: Timer = $BulletTimer
 
-var horizontal_speed : float = 0
+var bullet_scene = preload("res://Scenes/bullet.tscn")
+
+
+
+func _ready() -> void:
+	GlobalSignalBus.player_move.connect(_on_player_move)
+	bullet_timer.wait_time = firing_speed / 60
+	
 
 func _physics_process(delta: float) -> void:
-	handle_movement(delta)
-
-func handle_movement(delta: float) -> void:
-	if Input.is_action_pressed("move_left"):
-		horizontal_speed -= horizontal_acceleration
-	elif Input.is_action_pressed("move_right"):
-		horizontal_speed += horizontal_acceleration
-	else:
-		if horizontal_speed != 0:
-			horizontal_speed = move_toward(horizontal_speed, 0, horizontal_acceleration * 2)
-	horizontal_speed = clamp(horizontal_speed, (horizontal_acceleration * -16), (horizontal_acceleration * 16))
-	velocity.x = horizontal_speed * delta
 	move_and_slide()
-	global_position.x = clamp(position.x, 0 + (PLAYER_WIDTH / 2) , 180 - (PLAYER_WIDTH /2))
 
-func handle_animation() -> void:
-	pass
 
-func shoot_laser() -> void:
-	pass
+
+func _on_player_move(player_direction):
+	match player_direction:
+		GlobalEnums.direction.LEFT:
+			velocity.x = horizontal_acceleration * -1
+		GlobalEnums.direction.RIGHT:
+			velocity.x = horizontal_acceleration
+		GlobalEnums.direction.NIL:
+			velocity.x = 0;
+
+func shoot():
+	GlobalSignalBus.shoot.emit(bullet_scene, Vector2(0, -1), bullet_speed, global_position, GlobalEnums.fired_by.PLAYER)
+
+func _on_bullet_timer_timeout() -> void:
+	shoot()
+	bullet_timer.wait_time = firing_speed / 60

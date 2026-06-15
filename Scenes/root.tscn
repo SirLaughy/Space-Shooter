@@ -1,8 +1,69 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctlfuh6hsiyko"]
+[gd_scene format=3 uid="uid://ctlfuh6hsiyko"]
 
+[ext_resource type="Script" uid="uid://byng1xkg6e67c" path="res://Scripts/controls.gd" id="1_8pvmw"]
 [ext_resource type="PackedScene" uid="uid://br0e7vsq5b2ny" path="res://Scenes/Actors/player.tscn" id="1_i04dx"]
+[ext_resource type="Script" uid="uid://c4i4tiiie6qn3" path="res://Scripts/root.gd" id="1_vnucn"]
+[ext_resource type="PackedScene" uid="uid://3gd04kcs71gc" path="res://Scenes/Actors/enemy.tscn" id="4_c3mwy"]
 
-[node name="Root" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnucn"]
+size = Vector2(7, 420.75)
 
-[node name="Player" parent="." instance=ExtResource("1_i04dx")]
-position = Vector2(90, 160)
+[node name="Root" type="Node2D" unique_id=1123869047]
+script = ExtResource("1_vnucn")
+vertical_speed = 50.0
+
+[node name="Controls" type="CanvasLayer" parent="." unique_id=1564813905]
+script = ExtResource("1_8pvmw")
+
+[node name="button_left" type="Button" parent="Controls" unique_id=851699795]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 58.0
+grow_vertical = 2
+
+[node name="button_right" type="Button" parent="Controls" unique_id=687306703]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Player" parent="." unique_id=1071460541 instance=ExtResource("1_i04dx")]
+position = Vector2(90, 308)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=2009600047 groups=["Walls"]]
+collision_layer = 16
+collision_mask = 11
+
+[node name="CollisionShape2D_left" type="CollisionShape2D" parent="Walls" unique_id=849977564]
+position = Vector2(-4, 115)
+shape = SubResource("RectangleShape2D_vnucn")
+
+[node name="CollisionShape2D_left2" type="CollisionShape2D" parent="Walls" unique_id=1341654970]
+position = Vector2(184, 119)
+shape = SubResource("RectangleShape2D_vnucn")
+
+[node name="Enemy" parent="." unique_id=242555459 instance=ExtResource("4_c3mwy")]
+position = Vector2(11, -83)
+firing_rate = 120.0
+
+[node name="Enemy2" parent="." unique_id=859897823 instance=ExtResource("4_c3mwy")]
+position = Vector2(79, -83)
+attack_type = 1
+
+[node name="Enemy3" parent="." unique_id=727117319 instance=ExtResource("4_c3mwy")]
+position = Vector2(56, -83)
+movement_type = 1
+firing_rate = 120.0
+
+[node name="Enemy4" parent="." unique_id=2048144445 instance=ExtResource("4_c3mwy")]
+position = Vector2(33, -83)
+movement_type = 1
+attack_type = 1
+
+[connection signal="button_down" from="Controls/button_left" to="Controls" method="_on_button_left_button_down"]
+[connection signal="button_up" from="Controls/button_left" to="Controls" method="_on_button_left_button_up"]
+[connection signal="button_down" from="Controls/button_right" to="Controls" method="_on_button_right_button_down"]
+[connection signal="button_up" from="Controls/button_right" to="Controls" method="_on_button_right_button_up"]

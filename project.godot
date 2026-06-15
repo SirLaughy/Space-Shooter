@@ -8,12 +8,21 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="SpaceShooter2"
 run/main_scene="uid://ctlfuh6hsiyko"
-config/features=PackedStringArray("4.5", "Mobile")
+config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalEnums="*uid://ci5nigg3xs22"
+GlobalSignalBus="*uid://4lf46u4om50s"
 
 [display]
 
@@ -21,6 +30,14 @@ window/size/viewport_width=180
 window/size/viewport_height=320
 window/stretch/mode="viewport"
 window/handheld/orientation=1
+
+[global_group]
+
+Destructibles=""
+Laser=""
+Obstacles=""
+Player=""
+Walls=""
 
 [input]
 
@@ -44,6 +61,8 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Obstacles"
 2d_physics/layer_3="Laser"
+2d_physics/layer_4="Destructables"
+2d_physics/layer_5="Walls"
 
 [rendering]
 
