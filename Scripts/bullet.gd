@@ -4,7 +4,7 @@ var fired_by: GlobalEnums.fired_by
 var speed: float
 var direction: Vector2
 
-func _init() -> void:
+func _ready() -> void:
 	match fired_by:
 		GlobalEnums.fired_by.PLAYER:
 			set_collision_mask_value(4, true)
@@ -18,6 +18,8 @@ func _physics_process(delta: float) -> void:
 		var colider = collision.get_collider()
 		if colider.get_groups().has("Player"):
 			GlobalSignalBus.player_died.emit()
+		else:
+			GlobalSignalBus.shot_enemy.emit()
 		colider.queue_free()
 		queue_free()
 
