@@ -19,5 +19,4 @@ enum movement_type{
 enum attack_type{
 	GUN,
 	BULLBAR,
-	SPAWNER,
 }

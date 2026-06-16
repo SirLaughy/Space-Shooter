@@ -10,12 +10,17 @@ extends CharacterBody2D
 
 var bullet_scene = preload("res://Scenes/bullet.tscn")
 
+
+
 func _ready() -> void:
 	GlobalSignalBus.player_move.connect(_on_player_move)
 	bullet_timer.wait_time = firing_speed / 60
+	
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
+
+
 
 func _on_player_move(player_direction):
 	match player_direction:
