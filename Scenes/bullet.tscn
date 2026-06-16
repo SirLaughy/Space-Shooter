@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b4fvdtsfsclo2"]
+
+[ext_resource type="Script" uid="uid://yog7jgd206fk" path="res://Scripts/bullet.gd" id="1_oduel"]
+[ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="1_xjght"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oduel"]
+atlas = ExtResource("1_xjght")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xjght"]
+radius = 0.6
+height = 2.3
+
+[node name="bullet" type="CharacterBody2D" unique_id=222095245 groups=["Laser"]]
+z_index = 1
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_oduel")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1475690758]
+modulate = Color(1.0009145, 1.0009145, 0.23554575, 0.99607843)
+position = Vector2(0, -1.9073486e-06)
+rotation = -3.1415927
+scale = Vector2(0.02, 0.037)
+texture = SubResource("AtlasTexture_oduel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1484371318]
+shape = SubResource("CapsuleShape2D_xjght")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=35697391]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
