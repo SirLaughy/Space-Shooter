@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://be3bfh5a5ycw6"]
+
+[ext_resource type="Script" uid="uid://b2e1y2vqaoycf" path="res://Scripts/Components/Entity.gd" id="1_1o03u"]
+[ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="2_2ld1s"]
+[ext_resource type="Script" uid="uid://vbarsxij1ugt" path="res://Scripts/Components/movement_player_input.gd" id="3_86vaj"]
+[ext_resource type="Resource" uid="uid://cm1wcq18wypnc" path="res://Resources/player_movement_stats.tres" id="4_7jbla"]
+[ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/movement.gd" id="5_kcttr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xdo8"]
+atlas = ExtResource("2_2ld1s")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_n3dut"]
+points = PackedVector2Array(0, -32, 32, 32, -32, 32)
+
+[node name="PlayerNew" type="CharacterBody2D" unique_id=205930645]
+modulate = Color(1, 0, 0, 1)
+collision_mask = 16
+script = ExtResource("1_1o03u")
+metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=858271819]
+texture = SubResource("AtlasTexture_6xdo8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=150285905]
+shape = SubResource("ConvexPolygonShape2D_n3dut")
+
+[node name="MovementPlayerInput" type="Node" parent="." unique_id=2132936046 node_paths=PackedStringArray("actor")]
+script = ExtResource("3_86vaj")
+actor = NodePath("..")
+movement_stats = ExtResource("4_7jbla")
+metadata/_custom_type_script = "uid://vbarsxij1ugt"
+
+[node name="Movement" type="Node" parent="." unique_id=620080337 node_paths=PackedStringArray("actor")]
+script = ExtResource("5_kcttr")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://blo8u2akdfi12"

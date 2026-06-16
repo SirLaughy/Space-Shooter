@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EntityAppearance" format=3 uid="uid://mta1xghkhojs"]
+
+[ext_resource type="Script" uid="uid://dhsbsic06lq62" path="res://Scripts/Resources/entity_appearance.gd" id="1_bfs2v"]
+[ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="2_71ty5"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_q1tp2"]
+points = PackedVector2Array(0, 0, 0, 0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrvkg"]
+atlas = ExtResource("2_71ty5")
+region = Rect2(0, 0, 64, 64)
+
+[resource]
+script = ExtResource("1_bfs2v")
+sprite = SubResource("AtlasTexture_hrvkg")
+collision_shape = SubResource("ConvexPolygonShape2D_q1tp2")
+metadata/_custom_type_script = "uid://dhsbsic06lq62"

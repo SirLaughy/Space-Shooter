@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://ctlfuh6hsiyko"]
 
 [ext_resource type="Script" uid="uid://byng1xkg6e67c" path="res://Scripts/controls.gd" id="1_8pvmw"]
-[ext_resource type="PackedScene" uid="uid://br0e7vsq5b2ny" path="res://Scenes/Actors/player.tscn" id="1_i04dx"]
 [ext_resource type="Script" uid="uid://c4i4tiiie6qn3" path="res://Scripts/root.gd" id="1_vnucn"]
-[ext_resource type="PackedScene" uid="uid://3gd04kcs71gc" path="res://Scenes/Actors/enemy.tscn" id="4_c3mwy"]
+[ext_resource type="PackedScene" uid="uid://be3bfh5a5ycw6" path="res://Scenes/Actors/player_new.tscn" id="4_4g5cr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnucn"]
-size = Vector2(7, 420.75)
+size = Vector2(22.75, 1262)
 
 [node name="Root" type="Node2D" unique_id=1123869047]
 script = ExtResource("1_vnucn")
@@ -30,26 +29,17 @@ offset_left = -55.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Player" parent="." unique_id=1071460541 instance=ExtResource("1_i04dx")]
-position = Vector2(90, 308)
-
 [node name="Walls" type="StaticBody2D" parent="." unique_id=2009600047 groups=["Walls"]]
 collision_layer = 16
 collision_mask = 11
 
 [node name="CollisionShape2D_left" type="CollisionShape2D" parent="Walls" unique_id=849977564]
-position = Vector2(-4, 115)
+position = Vector2(-9, 342)
 shape = SubResource("RectangleShape2D_vnucn")
 
 [node name="CollisionShape2D_left2" type="CollisionShape2D" parent="Walls" unique_id=1341654970]
-position = Vector2(184, 119)
+position = Vector2(549, 344)
 shape = SubResource("RectangleShape2D_vnucn")
-
-[node name="Spawner" parent="." unique_id=242555459 instance=ExtResource("4_c3mwy")]
-position = Vector2(92, -64)
-movement_type = 1
-attack_type = 2
-vertical_speed = 0.0
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1945069087]
 
@@ -60,6 +50,9 @@ offset_bottom = 23.0
 grow_horizontal = 2
 size_flags_vertical = 0
 horizontal_alignment = 1
+
+[node name="PlayerNew" parent="." unique_id=205930645 instance=ExtResource("4_4g5cr")]
+position = Vector2(271, 921)
 
 [connection signal="button_down" from="Controls/button_left" to="Controls" method="_on_button_left_button_down"]
 [connection signal="button_up" from="Controls/button_left" to="Controls" method="_on_button_left_button_up"]
