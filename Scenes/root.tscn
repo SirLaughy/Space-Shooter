@@ -45,23 +45,21 @@ shape = SubResource("RectangleShape2D_vnucn")
 position = Vector2(184, 119)
 shape = SubResource("RectangleShape2D_vnucn")
 
-[node name="Enemy" parent="." unique_id=242555459 instance=ExtResource("4_c3mwy")]
-position = Vector2(11, -83)
-firing_rate = 120.0
-
-[node name="Enemy2" parent="." unique_id=859897823 instance=ExtResource("4_c3mwy")]
-position = Vector2(79, -83)
-attack_type = 1
-
-[node name="Enemy3" parent="." unique_id=727117319 instance=ExtResource("4_c3mwy")]
-position = Vector2(56, -83)
+[node name="Spawner" parent="." unique_id=242555459 instance=ExtResource("4_c3mwy")]
+position = Vector2(92, -64)
 movement_type = 1
-firing_rate = 120.0
+attack_type = 2
+vertical_speed = 0.0
 
-[node name="Enemy4" parent="." unique_id=2048144445 instance=ExtResource("4_c3mwy")]
-position = Vector2(33, -83)
-movement_type = 1
-attack_type = 1
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1945069087]
+
+[node name="ScoreLabel" type="Label" parent="HUD" unique_id=64348952]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_vertical = 0
+horizontal_alignment = 1
 
 [connection signal="button_down" from="Controls/button_left" to="Controls" method="_on_button_left_button_down"]
 [connection signal="button_up" from="Controls/button_left" to="Controls" method="_on_button_left_button_up"]
