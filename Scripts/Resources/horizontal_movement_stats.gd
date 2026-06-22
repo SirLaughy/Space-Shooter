@@ -1,6 +1,6 @@
-class_name MovementStats
+class_name HorizontalMovementStats
 extends Resource
 
-@export var horizontal_speed: float = 100.0
+@export var max_speed: float = 100.0
 @export var acceleration: float = 1000.0
 @export var friction: float = 500.0

@@ -1,7 +1,6 @@
 extends Node
 
 # Player Signals
-signal player_move(player_direction: GlobalEnums.direction)
 signal player_died
 
 # Bullet Signals

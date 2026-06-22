@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://ctlfuh6hsiyko"]
 
-[ext_resource type="Script" uid="uid://byng1xkg6e67c" path="res://Scripts/controls.gd" id="1_8pvmw"]
 [ext_resource type="Script" uid="uid://c4i4tiiie6qn3" path="res://Scripts/root.gd" id="1_vnucn"]
 [ext_resource type="PackedScene" uid="uid://be3bfh5a5ycw6" path="res://Scenes/Actors/player_new.tscn" id="4_4g5cr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3mwy"]
+size = Vector2(250, 1000)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnucn"]
 size = Vector2(22.75, 1262)
@@ -12,22 +14,18 @@ script = ExtResource("1_vnucn")
 vertical_speed = 50.0
 
 [node name="Controls" type="CanvasLayer" parent="." unique_id=1564813905]
-script = ExtResource("1_8pvmw")
 
-[node name="button_left" type="Button" parent="Controls" unique_id=851699795]
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 58.0
-grow_vertical = 2
+[node name="button_left" type="TouchScreenButton" parent="Controls" unique_id=1104177513]
+position = Vector2(129, 474)
+shape = SubResource("RectangleShape2D_c3mwy")
+shape_visible = false
+action = "move_left"
 
-[node name="button_right" type="Button" parent="Controls" unique_id=687306703]
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -55.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="button_right" type="TouchScreenButton" parent="Controls" unique_id=976539417]
+position = Vector2(411, 474)
+shape = SubResource("RectangleShape2D_c3mwy")
+shape_visible = false
+action = "move_right"
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=2009600047 groups=["Walls"]]
 collision_layer = 16
@@ -53,8 +51,3 @@ horizontal_alignment = 1
 
 [node name="PlayerNew" parent="." unique_id=205930645 instance=ExtResource("4_4g5cr")]
 position = Vector2(271, 921)
-
-[connection signal="button_down" from="Controls/button_left" to="Controls" method="_on_button_left_button_down"]
-[connection signal="button_up" from="Controls/button_left" to="Controls" method="_on_button_left_button_up"]
-[connection signal="button_down" from="Controls/button_right" to="Controls" method="_on_button_right_button_down"]
-[connection signal="button_up" from="Controls/button_right" to="Controls" method="_on_button_right_button_up"]

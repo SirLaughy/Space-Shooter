@@ -25,13 +25,19 @@ texture = SubResource("AtlasTexture_6xdo8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=150285905]
 shape = SubResource("ConvexPolygonShape2D_n3dut")
 
-[node name="MovementPlayerInput" type="Node" parent="." unique_id=2132936046 node_paths=PackedStringArray("actor")]
+[node name="MovementPlayerInput" type="Node" parent="." unique_id=2132936046 node_paths=PackedStringArray("actor") groups=["Player"]]
 script = ExtResource("3_86vaj")
 actor = NodePath("..")
-movement_stats = ExtResource("4_7jbla")
+horizontal_movement_stats = ExtResource("4_7jbla")
 metadata/_custom_type_script = "uid://vbarsxij1ugt"
 
 [node name="Movement" type="Node" parent="." unique_id=620080337 node_paths=PackedStringArray("actor")]
 script = ExtResource("5_kcttr")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://blo8u2akdfi12"
+
+[node name="Label" type="Label" parent="." unique_id=1735153252]
+offset_left = 35.0
+offset_top = 7.0
+offset_right = 75.0
+offset_bottom = 30.0
