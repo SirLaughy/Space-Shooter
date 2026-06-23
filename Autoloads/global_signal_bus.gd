@@ -4,8 +4,8 @@ extends Node
 signal player_died
 
 # Bullet Signals
-signal shoot(bullet, direction: Vector2, bullet_speed: float, location: Vector2, fired_by: GlobalEnums.fired_by)
-signal shot_enemy()
+signal summon_projectile(scene, projectile_stats: ProjectileStats, location: Vector2, direction: Vector2, summoner_group: GlobalEnums.group_types)
+signal summon_entity()
 
 # Enemy Signals
-signal summon_enemy(enemy, location: Vector2, movement_type: GlobalEnums.movement_type, attack_type: GlobalEnums.attack_type, horizontal_speed: float, firing_rate: float, bullet_speed: float, vertical_speed: float)
+signal summon_enemy()

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ulncv50en5nb"]
+
+[ext_resource type="Script" uid="uid://cqjmeqr8n2lgx" path="res://Scripts/Actors/projectile.gd" id="1_rsyq6"]
+[ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="2_yr2qt"]
+[ext_resource type="Script" uid="uid://byjaa8gqlho7j" path="res://Scripts/Components/free_on_exit.gd" id="3_tl4hk"]
+[ext_resource type="Script" uid="uid://4c64x2s8e5tr" path="res://Scripts/Components/projectile_movement.gd" id="6_cgh1o"]
+[ext_resource type="Script" uid="uid://bkchk644uk72" path="res://Scripts/Components/hurt_box.gd" id="7_cu5m1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tl4hk"]
+atlas = ExtResource("2_yr2qt")
+region = Rect2(280, 0, 8, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rsyq6"]
+size = Vector2(8, 16)
+
+[node name="Projectile" type="CharacterBody2D" unique_id=991081236]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_rsyq6")
+metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
+
+[node name="ProjectileSprite" type="Sprite2D" parent="." unique_id=2013167737]
+texture = SubResource("AtlasTexture_tl4hk")
+
+[node name="FreeOnExit" type="VisibleOnScreenNotifier2D" parent="." unique_id=13713890 node_paths=PackedStringArray("actor")]
+script = ExtResource("3_tl4hk")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://byjaa8gqlho7j"
+
+[node name="ProjectileMovement" type="Node" parent="." unique_id=646664162 node_paths=PackedStringArray("actor")]
+script = ExtResource("6_cgh1o")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://4c64x2s8e5tr"
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=152231810 node_paths=PackedStringArray("actor")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("7_cu5m1")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://bkchk644uk72"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1064985426]
+shape = SubResource("RectangleShape2D_rsyq6")

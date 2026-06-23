@@ -14,6 +14,11 @@ func _physics_process(delta: float) -> void:
 			actor.velocity.x = clamp(actor.velocity.x - horizontal_movement_stats.friction * delta, 0, horizontal_movement_stats.max_speed)
 		if actor.velocity.x < 0:
 			actor.velocity.x = clamp(actor.velocity.x + horizontal_movement_stats.friction * delta, horizontal_movement_stats.max_speed * -1, 0)
+	if (Input.is_action_pressed("move_left") && Input.is_action_pressed("move_right")):
+		if actor.velocity.x > 0:
+			actor.velocity.x = clamp(actor.velocity.x - horizontal_movement_stats.acceleration * delta, 0, horizontal_movement_stats.max_speed)
+		if actor.velocity.x < 0:
+			actor.velocity.x = clamp(actor.velocity.x + horizontal_movement_stats.acceleration * delta, horizontal_movement_stats.max_speed * -1, 0)
 	
 	if actor.is_on_wall():
 		var normal = actor.get_wall_normal()

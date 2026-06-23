@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ccjj3bwitc1vb"]
+
+[ext_resource type="Script" uid="uid://dnqkxtipqtttt" path="res://Scripts/Components/turret.gd" id="1_fcprl"]
+[ext_resource type="Resource" uid="uid://chetpf6esir03" path="res://Resources/player_turret_stats.tres" id="2_6spbj"]
+[ext_resource type="Resource" uid="uid://cd5v15aolgsel" path="res://Resources/basic_projectile.tres" id="3_pulj5"]
+[ext_resource type="Script" uid="uid://dfffshx385ra5" path="res://Scripts/Components/reload_timer.gd" id="4_ahfaj"]
+[ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="4_pulj5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahfaj"]
+atlas = ExtResource("4_pulj5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku01o"]
+atlas = ExtResource("4_pulj5")
+region = Rect2(256, 0, 8, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_628tr"]
+atlas = ExtResource("4_pulj5")
+region = Rect2(256, 0, 8, 8)
+
+[node name="Turret" type="RayCast2D" unique_id=1641285429]
+target_position = Vector2(0, -32)
+collision_mask = 0
+collide_with_bodies = false
+script = ExtResource("1_fcprl")
+turret_stats = ExtResource("2_6spbj")
+projectile_stats = ExtResource("3_pulj5")
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=1929546041 node_paths=PackedStringArray("actor")]
+autostart = true
+script = ExtResource("4_ahfaj")
+actor = NodePath("..")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="ReloadTimer" unique_id=210016995]
+position = Vector2(0, -10)
+rect = Rect2(-3, -22, 6, 32)
+
+[node name="Sprite" type="Node2D" parent="." unique_id=867658667]
+modulate = Color(0.2087101, 0.2087102, 0.2087099, 1)
+scale = Vector2(1.895, 1.895)
+
+[node name="BaseSprite" type="Sprite2D" parent="Sprite" unique_id=851655044]
+scale = Vector2(0.125, 0.125)
+texture = SubResource("AtlasTexture_ahfaj")
+
+[node name="BarrelSprite" type="Sprite2D" parent="Sprite" unique_id=1281589490]
+position = Vector2(0, -6.0000005)
+scale = Vector2(0.475, 0.185)
+texture = SubResource("AtlasTexture_ku01o")
+
+[node name="MuzzelSprite" type="Sprite2D" parent="Sprite" unique_id=708582824]
+position = Vector2(0, -12.000001)
+scale = Vector2(0.57, 0.24)
+texture = SubResource("AtlasTexture_628tr")

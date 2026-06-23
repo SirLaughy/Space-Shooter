@@ -6,9 +6,9 @@ enum direction{
 	NIL,
 }
 
-enum fired_by{
+enum group_types{
 	PLAYER,
-	ENEMY,
+	DESTRUCTIBLES,
 }
 
 enum movement_type{

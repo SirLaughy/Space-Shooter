@@ -1,155 +1,47 @@
-[gd_scene format=3 uid="uid://br0e7vsq5b2ny"]
+[gd_scene format=3 uid="uid://be3bfh5a5ycw6"]
 
-[ext_resource type="Script" uid="uid://oridgeve6qnr" path="res://Scripts/Actors/player.gd" id="1_lm2ka"]
 [ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="1_nikbh"]
+[ext_resource type="Script" uid="uid://b2e1y2vqaoycf" path="res://Scripts/Components/Entity.gd" id="1_wn7ci"]
+[ext_resource type="Script" uid="uid://vbarsxij1ugt" path="res://Scripts/Components/movement_player_input.gd" id="3_sfcrp"]
+[ext_resource type="Resource" uid="uid://cm1wcq18wypnc" path="res://Resources/player_movement_stats.tres" id="4_b2ja5"]
+[ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/movement.gd" id="5_tvyim"]
+[ext_resource type="PackedScene" uid="uid://ccjj3bwitc1vb" path="res://Scenes/turret.tscn" id="6_sfcrp"]
 
-[sub_resource type="Animation" id="Animation_lm2ka"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xdo8"]
+atlas = ExtResource("1_nikbh")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="Animation" id="Animation_wn7ci"]
-resource_name = "damage_taken"
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.9, 0.9), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15246084, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.46176082, 0.045681752, 0.045668215, 1), Color(1, 1, 1, 1)]
-}
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_n3dut"]
+points = PackedVector2Array(0, -32, 32, 32, -32, 32)
 
-[sub_resource type="Animation" id="Animation_sfcrp"]
-resource_name = "death"
-length = 0.4
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.2831855]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.10164056, 0.3997862),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1e-05, 1e-05)]
-}
-
-[sub_resource type="Animation" id="Animation_nikbh"]
-resource_name = "shoot"
-loop_mode = 1
-step = 0.1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b2ja5"]
-_data = {
-&"RESET": SubResource("Animation_lm2ka"),
-&"damage_taken": SubResource("Animation_wn7ci"),
-&"death": SubResource("Animation_sfcrp"),
-&"shoot": SubResource("Animation_nikbh")
-}
-
-[node name="Player" type="CharacterBody2D" unique_id=654949457 groups=["Player"]]
-z_index = 3
+[node name="Player" type="CharacterBody2D" unique_id=205930645]
+modulate = Color(1, 0, 0, 1)
 collision_mask = 16
-script = ExtResource("1_lm2ka")
-horizontal_acceleration = 100.0
-firing_speed = 60.0
-bullet_speed = 300.0
+script = ExtResource("1_wn7ci")
+metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
 
-[node name="PlayerSprite" type="Sprite2D" parent="." unique_id=1309758485]
-modulate = Color(0.5609549, 0.5609549, 0.5609549, 1)
-scale = Vector2(0.2675, 0.328125)
-texture = ExtResource("1_nikbh")
-hframes = 8
-vframes = 8
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=858271819]
+texture = SubResource("AtlasTexture_6xdo8")
 
-[node name="PlayerShape" type="CollisionPolygon2D" parent="." unique_id=1750164241]
-position = Vector2(0, 3)
-scale = Vector2(0.16, 0.16)
-polygon = PackedVector2Array(0, -81.25, 50, 43.75, -50, 43.75)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=150285905]
+shape = SubResource("ConvexPolygonShape2D_n3dut")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=521153987]
-libraries/ = SubResource("AnimationLibrary_b2ja5")
-autoplay = &"shoot"
+[node name="MovementPlayerInput" type="Node" parent="." unique_id=2132936046 node_paths=PackedStringArray("actor") groups=["Player"]]
+script = ExtResource("3_sfcrp")
+actor = NodePath("..")
+horizontal_movement_stats = ExtResource("4_b2ja5")
+metadata/_custom_type_script = "uid://vbarsxij1ugt"
 
-[node name="BulletTimer" type="Timer" parent="." unique_id=1626335050]
-autostart = true
+[node name="Movement" type="Node" parent="." unique_id=620080337 node_paths=PackedStringArray("actor")]
+script = ExtResource("5_tvyim")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://blo8u2akdfi12"
 
-[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
-[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]
+[node name="Turret" parent="." unique_id=1641285429 instance=ExtResource("6_sfcrp")]
+position = Vector2(0, 17)
+
+[node name="Label" type="Label" parent="." unique_id=1735153252]
+offset_left = 35.0
+offset_top = 7.0
+offset_right = 75.0
+offset_bottom = 30.0

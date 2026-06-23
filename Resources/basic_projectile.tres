@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ProjectileStats" format=3 uid="uid://cd5v15aolgsel"]
+
+[ext_resource type="Script" uid="uid://dgfsuvve28lan" path="res://Scripts/Resources/projectile_stats.gd" id="1_id87p"]
+
+[resource]
+script = ExtResource("1_id87p")
+projectile_name = "Basic Projectile"
+speed = 300.0
+damage = 1.0
+colour = Color(0.9148223, 0.7881361, 7.70092e-07, 1)
+metadata/_custom_type_script = "uid://dgfsuvve28lan"

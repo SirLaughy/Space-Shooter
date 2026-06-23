@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://ctlfuh6hsiyko"]
 
 [ext_resource type="Script" uid="uid://c4i4tiiie6qn3" path="res://Scripts/root.gd" id="1_vnucn"]
-[ext_resource type="PackedScene" uid="uid://be3bfh5a5ycw6" path="res://Scenes/Actors/player_new.tscn" id="4_4g5cr"]
+[ext_resource type="Script" uid="uid://bamaqkbavglaw" path="res://Scripts/spawn_manager.gd" id="2_vnucn"]
+[ext_resource type="PackedScene" uid="uid://be3bfh5a5ycw6" path="res://Scenes/Actors/player.tscn" id="4_4g5cr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3mwy"]
 size = Vector2(250, 1000)
@@ -12,6 +13,9 @@ size = Vector2(22.75, 1262)
 [node name="Root" type="Node2D" unique_id=1123869047]
 script = ExtResource("1_vnucn")
 vertical_speed = 50.0
+
+[node name="SpawnManager" type="Node2D" parent="." unique_id=1542563545]
+script = ExtResource("2_vnucn")
 
 [node name="Controls" type="CanvasLayer" parent="." unique_id=1564813905]
 
