@@ -2,7 +2,7 @@ class_name HurtBox
 extends Area2D
 
 @export var actor: Entity
-var stats = actor.projectile_stats
+@onready var stats = actor.projectile_stats
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)

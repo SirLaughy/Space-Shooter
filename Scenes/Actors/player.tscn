@@ -38,6 +38,7 @@ actor = NodePath("..")
 metadata/_custom_type_script = "uid://blo8u2akdfi12"
 
 [node name="Turret" parent="." unique_id=1641285429 instance=ExtResource("6_sfcrp")]
+z_index = 3
 position = Vector2(0, 17)
 
 [node name="Label" type="Label" parent="." unique_id=1735153252]

@@ -11,4 +11,4 @@ func _ready() -> void:
 
 func _on_timeout():
 	if visible_on_screen_notifier_2d.is_on_screen():
-		GlobalSignalBus.summon_projectile.emit(actor.projectile, actor.projectile_stats, actor.global_position, actor.get_direction(), actor.turret_stats.summoner_group)
+		GlobalSignalBus.summon_projectile.emit(actor.projectile, actor.projectile_stats, actor.global_position, actor.get_direction(), actor.turret_stats.summoner_type)
