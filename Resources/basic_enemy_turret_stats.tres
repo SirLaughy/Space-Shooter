@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TurretStats" format=3 uid="uid://copgdb6f2xj4a"]
+
+[ext_resource type="Script" uid="uid://cvqvyae3m6ich" path="res://Scripts/Resources/turret_stats.gd" id="1_6l2ca"]
+
+[resource]
+script = ExtResource("1_6l2ca")
+reload_time = 60.0
+summoner_type = 1
+metadata/_custom_type_script = "uid://cvqvyae3m6ich"

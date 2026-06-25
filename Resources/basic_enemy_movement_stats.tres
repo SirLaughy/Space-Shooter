@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="HorizontalMovementStats" format=3 uid="uid://dbyfa3qcc43bj"]
+
+[ext_resource type="Script" uid="uid://c1ficjv4yuedo" path="res://Scripts/Resources/horizontal_movement_stats.gd" id="1_g4scj"]
+
+[resource]
+script = ExtResource("1_g4scj")
+metadata/_custom_type_script = "uid://c1ficjv4yuedo"

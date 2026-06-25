@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://p4gveeem035d"]
+
+[ext_resource type="Script" uid="uid://b2e1y2vqaoycf" path="res://Scripts/Components/Entity.gd" id="1_rw6qj"]
+[ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="2_nx0hv"]
+[ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/movement.gd" id="2_r52uv"]
+[ext_resource type="Script" uid="uid://byjaa8gqlho7j" path="res://Scripts/Components/free_on_exit.gd" id="3_7iac5"]
+[ext_resource type="Script" uid="uid://bkchk644uk72" path="res://Scripts/Components/hurt_box.gd" id="4_cl7dj"]
+[ext_resource type="Script" uid="uid://cusltpl1sylg6" path="res://Scripts/Components/enemy_movement_input.gd" id="5_ssjx5"]
+[ext_resource type="Script" uid="uid://7661gwcv38wq" path="res://Scripts/Components/hitbox.gd" id="5_uspyy"]
+[ext_resource type="Script" uid="uid://c1ficjv4yuedo" path="res://Scripts/Resources/horizontal_movement_stats.gd" id="6_dx8pt"]
+[ext_resource type="PackedScene" uid="uid://ccjj3bwitc1vb" path="res://Scenes/turret.tscn" id="6_nx0hv"]
+[ext_resource type="Resource" uid="uid://copgdb6f2xj4a" path="res://Resources/basic_enemy_turret_stats.tres" id="7_kuxr8"]
+[ext_resource type="Script" uid="uid://dgfsuvve28lan" path="res://Scripts/Resources/projectile_stats.gd" id="8_ssjx5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kuxr8"]
+atlas = ExtResource("2_nx0hv")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ssjx5"]
+points = PackedVector2Array(-34, 33, 0, -34, 34, 33)
+
+[sub_resource type="Resource" id="Resource_ovtdj"]
+script = ExtResource("6_dx8pt")
+metadata/_custom_type_script = "uid://c1ficjv4yuedo"
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dx8pt"]
+points = PackedVector2Array(-32, 32, 0, -32, 32, 32)
+
+[sub_resource type="Resource" id="Resource_dx8pt"]
+script = ExtResource("8_ssjx5")
+projectile_name = "Basic Projectile"
+speed = 600.0
+damage = 1.0
+colour = Color(0.9148223, 0.7881361, 7.70092e-07, 1)
+metadata/_custom_type_script = "uid://dgfsuvve28lan"
+
+[node name="BasicEnemy" type="CharacterBody2D" unique_id=1596659350]
+modulate = Color(0.99999994, 0.15909621, 0.99785906, 1)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_rw6qj")
+metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=431311158]
+texture = SubResource("AtlasTexture_kuxr8")
+
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=1593397725 node_paths=PackedStringArray("actor")]
+shape = SubResource("ConvexPolygonShape2D_ssjx5")
+script = ExtResource("5_uspyy")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://7661gwcv38wq"
+
+[node name="Movement" type="Node" parent="." unique_id=685244527 node_paths=PackedStringArray("actor")]
+script = ExtResource("2_r52uv")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://blo8u2akdfi12"
+
+[node name="EnemyMovementInput" type="Node" parent="." unique_id=333014799 node_paths=PackedStringArray("actor")]
+script = ExtResource("5_ssjx5")
+actor = NodePath("..")
+movement_stats = SubResource("Resource_ovtdj")
+metadata/_custom_type_script = "uid://cusltpl1sylg6"
+
+[node name="FreeOnExit" type="VisibleOnScreenNotifier2D" parent="." unique_id=142007006 node_paths=PackedStringArray("actor")]
+script = ExtResource("3_7iac5")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://byjaa8gqlho7j"
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1446782888 node_paths=PackedStringArray("actor")]
+collision_layer = 8
+script = ExtResource("4_cl7dj")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://bkchk644uk72"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1205664930]
+shape = SubResource("ConvexPolygonShape2D_dx8pt")
+
+[node name="Turret" parent="." unique_id=1641285429 instance=ExtResource("6_nx0hv")]
+position = Vector2(0, 14)
+turret_stats = ExtResource("7_kuxr8")
+projectile_stats = SubResource("Resource_dx8pt")
