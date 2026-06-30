@@ -6,6 +6,8 @@
 [ext_resource type="Resource" uid="uid://cm1wcq18wypnc" path="res://Resources/player_movement_stats.tres" id="4_b2ja5"]
 [ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/movement.gd" id="5_tvyim"]
 [ext_resource type="PackedScene" uid="uid://ccjj3bwitc1vb" path="res://Scenes/turret.tscn" id="6_sfcrp"]
+[ext_resource type="Resource" uid="uid://chetpf6esir03" path="res://Resources/player_turret_stats.tres" id="7_tvyim"]
+[ext_resource type="Resource" uid="uid://cd5v15aolgsel" path="res://Resources/basic_projectile.tres" id="8_4sjoo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xdo8"]
 atlas = ExtResource("1_nikbh")
@@ -40,6 +42,8 @@ metadata/_custom_type_script = "uid://blo8u2akdfi12"
 [node name="Turret" parent="." unique_id=1641285429 instance=ExtResource("6_sfcrp")]
 z_index = 3
 position = Vector2(0, 17)
+turret_stats = ExtResource("7_tvyim")
+projectile_stats = ExtResource("8_4sjoo")
 
 [node name="Label" type="Label" parent="." unique_id=1735153252]
 offset_left = 35.0

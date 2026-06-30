@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://ccjj3bwitc1vb"]
 
 [ext_resource type="Script" uid="uid://dnqkxtipqtttt" path="res://Scripts/Components/turret.gd" id="1_fcprl"]
-[ext_resource type="Resource" uid="uid://chetpf6esir03" path="res://Resources/player_turret_stats.tres" id="2_6spbj"]
-[ext_resource type="Resource" uid="uid://cd5v15aolgsel" path="res://Resources/basic_projectile.tres" id="3_pulj5"]
 [ext_resource type="Script" uid="uid://dfffshx385ra5" path="res://Scripts/Components/reload_timer.gd" id="4_ahfaj"]
 [ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="4_pulj5"]
 
@@ -18,13 +16,10 @@ region = Rect2(256, 0, 8, 64)
 atlas = ExtResource("4_pulj5")
 region = Rect2(256, 0, 8, 8)
 
-[node name="Turret" type="RayCast2D" unique_id=1641285429]
-target_position = Vector2(0, -32)
-collision_mask = 0
-collide_with_bodies = false
+[node name="Turret" type="Node2D" unique_id=1752228748 node_paths=PackedStringArray("marker_top", "marker_bottom")]
 script = ExtResource("1_fcprl")
-turret_stats = ExtResource("2_6spbj")
-projectile_stats = ExtResource("3_pulj5")
+marker_top = NodePath("Markers/Marker2DTop")
+marker_bottom = NodePath("Markers/Marker2DBottom")
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=1929546041 node_paths=PackedStringArray("actor")]
 autostart = true
@@ -33,7 +28,7 @@ actor = NodePath("..")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="ReloadTimer" unique_id=210016995]
 position = Vector2(0, -10)
-rect = Rect2(-3, -22, 6, 32)
+rect = Rect2(-3, -31, 6, 41)
 
 [node name="Sprite" type="Node2D" parent="." unique_id=867658667]
 modulate = Color(0.2087101, 0.2087102, 0.2087099, 1)
@@ -52,3 +47,10 @@ texture = SubResource("AtlasTexture_ku01o")
 position = Vector2(0, -12.000001)
 scale = Vector2(0.57, 0.24)
 texture = SubResource("AtlasTexture_628tr")
+
+[node name="Markers" type="Node" parent="." unique_id=1296517082]
+
+[node name="Marker2DTop" type="Node2D" parent="Markers" unique_id=1989107368]
+position = Vector2(0, -24)
+
+[node name="Marker2DBottom" type="Node2D" parent="Markers" unique_id=1624654877]
