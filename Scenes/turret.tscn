@@ -16,10 +16,8 @@ region = Rect2(256, 0, 8, 64)
 atlas = ExtResource("4_pulj5")
 region = Rect2(256, 0, 8, 8)
 
-[node name="Turret" type="Node2D" unique_id=1752228748 node_paths=PackedStringArray("marker_top", "marker_bottom")]
+[node name="Turret" type="Node2D" unique_id=1752228748]
 script = ExtResource("1_fcprl")
-marker_top = NodePath("Markers/Marker2DTop")
-marker_bottom = NodePath("Markers/Marker2DBottom")
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=1929546041 node_paths=PackedStringArray("actor")]
 autostart = true
@@ -47,10 +45,3 @@ texture = SubResource("AtlasTexture_ku01o")
 position = Vector2(0, -12.000001)
 scale = Vector2(0.57, 0.24)
 texture = SubResource("AtlasTexture_628tr")
-
-[node name="Markers" type="Node" parent="." unique_id=1296517082]
-
-[node name="Marker2DTop" type="Node2D" parent="Markers" unique_id=1989107368]
-position = Vector2(0, -24)
-
-[node name="Marker2DBottom" type="Node2D" parent="Markers" unique_id=1624654877]

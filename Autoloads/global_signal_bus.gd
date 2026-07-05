@@ -4,7 +4,7 @@ extends Node
 signal player_died
 
 # Bullet Signals
-signal summon_projectile(scene, projectile_stats: ProjectileStats, location: Vector2, direction: Vector2, summoner_type: GlobalEnums.group_types)
+signal summon_projectile(scene, projectile_stats: ProjectileStats, location: Vector2, angle: float, summoner_type: GlobalEnums.group_types)
 signal summon_entity()
 
 # Enemy Signals

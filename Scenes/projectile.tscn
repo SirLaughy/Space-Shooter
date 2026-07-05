@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="2_yr2qt"]
 [ext_resource type="Script" uid="uid://byjaa8gqlho7j" path="res://Scripts/Components/free_on_exit.gd" id="3_tl4hk"]
 [ext_resource type="Script" uid="uid://4c64x2s8e5tr" path="res://Scripts/Components/projectile_movement.gd" id="6_cgh1o"]
+[ext_resource type="Script" uid="uid://dxp1434xbslk7" path="res://Scripts/label.gd" id="6_cu5m1"]
 [ext_resource type="Script" uid="uid://bkchk644uk72" path="res://Scripts/Components/hurt_box.gd" id="7_cu5m1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tl4hk"]
@@ -43,3 +44,12 @@ metadata/_custom_type_script = "uid://bkchk644uk72"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1064985426]
 shape = SubResource("RectangleShape2D_rsyq6")
+
+[node name="Label" type="Label" parent="." unique_id=57426119 node_paths=PackedStringArray("actor")]
+visible = false
+offset_left = 5.0
+offset_top = -5.0
+offset_right = 41.0
+offset_bottom = 18.0
+script = ExtResource("6_cu5m1")
+actor = NodePath("..")

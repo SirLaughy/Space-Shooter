@@ -14,3 +14,7 @@ func _ready() -> void:
 			hurt_box.set_collision_mask_value(4, true)
 		GlobalEnums.group_types.DESTRUCTIBLES:
 			hurt_box.set_collision_mask_value(1, true)
+
+func _process(delta: float) -> void:
+	var temp_dir = Vector2.from_angle(global_rotation).normalized()
+	direction = Vector2(temp_dir.y * -1, temp_dir.x * -1)
