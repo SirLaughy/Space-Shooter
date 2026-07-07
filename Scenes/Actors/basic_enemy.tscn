@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ccjj3bwitc1vb" path="res://Scenes/turret.tscn" id="6_nx0hv"]
 [ext_resource type="Resource" uid="uid://copgdb6f2xj4a" path="res://Resources/basic_enemy_turret_stats.tres" id="7_kuxr8"]
 [ext_resource type="Script" uid="uid://dgfsuvve28lan" path="res://Scripts/Resources/projectile_stats.gd" id="8_ssjx5"]
+[ext_resource type="Script" uid="uid://box5qsvrxlwqs" path="res://Scripts/Components/health.gd" id="12_dx8pt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kuxr8"]
 atlas = ExtResource("2_nx0hv")
@@ -47,11 +48,19 @@ metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=431311158]
 texture = SubResource("AtlasTexture_kuxr8")
 
-[node name="HitBox" type="CollisionShape2D" parent="." unique_id=1593397725 node_paths=PackedStringArray("actor")]
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=1593397725 node_paths=PackedStringArray("actor", "health")]
 shape = SubResource("ConvexPolygonShape2D_ssjx5")
 script = ExtResource("5_uspyy")
 actor = NodePath("..")
+health = NodePath("../Health")
 metadata/_custom_type_script = "uid://7661gwcv38wq"
+
+[node name="Health" type="Node" parent="." unique_id=189556271 node_paths=PackedStringArray("actor", "hit_box")]
+script = ExtResource("12_dx8pt")
+actor = NodePath("..")
+hit_box = NodePath("../HitBox")
+max_health = 3.0
+metadata/_custom_type_script = "uid://box5qsvrxlwqs"
 
 [node name="Movement" type="Node" parent="." unique_id=685244527 node_paths=PackedStringArray("actor")]
 script = ExtResource("2_r52uv")

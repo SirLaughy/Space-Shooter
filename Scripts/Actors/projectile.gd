@@ -9,6 +9,7 @@ var summoner_type: GlobalEnums.group_types
 
 func _ready() -> void:
 	modulate = projectile_stats.colour
+	hurt_box.damage = projectile_stats.damage
 	match summoner_type:
 		GlobalEnums.group_types.PLAYER:
 			hurt_box.set_collision_mask_value(4, true)

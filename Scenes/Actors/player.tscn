@@ -2,12 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="1_nikbh"]
 [ext_resource type="Script" uid="uid://b2e1y2vqaoycf" path="res://Scripts/Components/Entity.gd" id="1_wn7ci"]
+[ext_resource type="Script" uid="uid://7661gwcv38wq" path="res://Scripts/Components/hitbox.gd" id="3_borc1"]
 [ext_resource type="Script" uid="uid://vbarsxij1ugt" path="res://Scripts/Components/movement_player_input.gd" id="3_sfcrp"]
 [ext_resource type="Resource" uid="uid://cm1wcq18wypnc" path="res://Resources/player_movement_stats.tres" id="4_b2ja5"]
 [ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/movement.gd" id="5_tvyim"]
 [ext_resource type="PackedScene" uid="uid://ccjj3bwitc1vb" path="res://Scenes/turret.tscn" id="6_sfcrp"]
 [ext_resource type="Resource" uid="uid://chetpf6esir03" path="res://Resources/player_turret_stats.tres" id="7_tvyim"]
 [ext_resource type="Resource" uid="uid://cd5v15aolgsel" path="res://Resources/basic_projectile.tres" id="8_4sjoo"]
+[ext_resource type="Script" uid="uid://box5qsvrxlwqs" path="res://Scripts/Components/health.gd" id="9_4sjoo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xdo8"]
 atlas = ExtResource("1_nikbh")
@@ -25,19 +27,29 @@ metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=858271819]
 texture = SubResource("AtlasTexture_6xdo8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=150285905]
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=2121233073 node_paths=PackedStringArray("actor", "health")]
 shape = SubResource("ConvexPolygonShape2D_n3dut")
+script = ExtResource("3_borc1")
+actor = NodePath("..")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://7661gwcv38wq"
+
+[node name="Health" type="Node" parent="." unique_id=1339465166 node_paths=PackedStringArray("actor")]
+script = ExtResource("9_4sjoo")
+actor = NodePath("..")
+max_health = 3.0
+metadata/_custom_type_script = "uid://box5qsvrxlwqs"
+
+[node name="Movement" type="Node" parent="." unique_id=620080337 node_paths=PackedStringArray("actor")]
+script = ExtResource("5_tvyim")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://blo8u2akdfi12"
 
 [node name="MovementPlayerInput" type="Node" parent="." unique_id=2132936046 node_paths=PackedStringArray("actor") groups=["Player"]]
 script = ExtResource("3_sfcrp")
 actor = NodePath("..")
 horizontal_movement_stats = ExtResource("4_b2ja5")
 metadata/_custom_type_script = "uid://vbarsxij1ugt"
-
-[node name="Movement" type="Node" parent="." unique_id=620080337 node_paths=PackedStringArray("actor")]
-script = ExtResource("5_tvyim")
-actor = NodePath("..")
-metadata/_custom_type_script = "uid://blo8u2akdfi12"
 
 [node name="Turret" parent="." unique_id=1641285429 instance=ExtResource("6_sfcrp")]
 z_index = 3
