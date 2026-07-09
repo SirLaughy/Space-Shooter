@@ -8,6 +8,8 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D):
-	if body.get_children().has("HitBox"):
-		body.hitbox.health_change(damage * -1)
-	queue_free()
+	var children = str(body.get_children())
+	if children.contains("HitBox"):
+		var node = body.get_node("HitBox")
+		node.health_change(damage * -1)
+	actor.queue_free()

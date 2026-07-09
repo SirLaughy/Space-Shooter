@@ -7,6 +7,8 @@ func _ready() -> void:
 
 func _on_entity_died(entity: Entity) -> void:
 	var groups = entity.get_groups()
+	print(str(entity))
+	print(str(groups))
 	if groups.has("Player"):
 		get_tree().reload_current_scene()
 	elif groups.has("Destructibles"):

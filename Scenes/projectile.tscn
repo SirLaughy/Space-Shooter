@@ -36,7 +36,7 @@ actor = NodePath("..")
 metadata/_custom_type_script = "uid://4c64x2s8e5tr"
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=152231810 node_paths=PackedStringArray("actor")]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 0
 script = ExtResource("7_cu5m1")
 actor = NodePath("..")

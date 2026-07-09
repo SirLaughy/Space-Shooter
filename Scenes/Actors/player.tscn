@@ -18,7 +18,7 @@ region = Rect2(0, 0, 64, 64)
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_n3dut"]
 points = PackedVector2Array(0, -32, 32, 32, -32, 32)
 
-[node name="Player" type="CharacterBody2D" unique_id=205930645]
+[node name="Player" type="CharacterBody2D" unique_id=205930645 groups=["Player"]]
 modulate = Color(1, 0, 0, 1)
 collision_mask = 16
 script = ExtResource("1_wn7ci")
