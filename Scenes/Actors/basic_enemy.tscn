@@ -1,17 +1,18 @@
 [gd_scene format=3 uid="uid://p4gveeem035d"]
 
-[ext_resource type="Script" uid="uid://b2e1y2vqaoycf" path="res://Scripts/Components/Entity.gd" id="1_rw6qj"]
+[ext_resource type="Script" uid="uid://b2e1y2vqaoycf" path="res://Scripts/Actors/Entity.gd" id="1_rw6qj"]
 [ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="2_nx0hv"]
-[ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/movement.gd" id="2_r52uv"]
+[ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/Movement/movement.gd" id="2_r52uv"]
 [ext_resource type="Script" uid="uid://byjaa8gqlho7j" path="res://Scripts/Components/free_on_exit.gd" id="3_7iac5"]
 [ext_resource type="Script" uid="uid://bkchk644uk72" path="res://Scripts/Components/hurt_box.gd" id="4_cl7dj"]
-[ext_resource type="Script" uid="uid://cusltpl1sylg6" path="res://Scripts/Components/enemy_movement_input.gd" id="5_ssjx5"]
+[ext_resource type="Script" uid="uid://cusltpl1sylg6" path="res://Scripts/Components/Movement/side_to_side_movement_input.gd" id="5_ssjx5"]
 [ext_resource type="Script" uid="uid://7661gwcv38wq" path="res://Scripts/Components/hitbox.gd" id="5_uspyy"]
-[ext_resource type="Script" uid="uid://c1ficjv4yuedo" path="res://Scripts/Resources/horizontal_movement_stats.gd" id="6_dx8pt"]
 [ext_resource type="PackedScene" uid="uid://ccjj3bwitc1vb" path="res://Scenes/turret.tscn" id="6_nx0hv"]
+[ext_resource type="Resource" uid="uid://dbyfa3qcc43bj" path="res://Resources/basic_enemy_movement_stats.tres" id="7_dx8pt"]
 [ext_resource type="Resource" uid="uid://copgdb6f2xj4a" path="res://Resources/basic_enemy_turret_stats.tres" id="7_kuxr8"]
 [ext_resource type="Script" uid="uid://dgfsuvve28lan" path="res://Scripts/Resources/projectile_stats.gd" id="8_ssjx5"]
 [ext_resource type="Script" uid="uid://box5qsvrxlwqs" path="res://Scripts/Components/health.gd" id="12_dx8pt"]
+[ext_resource type="Script" uid="uid://dpadanjoouurt" path="res://Scripts/Components/Movement/move_vertically_on_wall_input.gd" id="13_ovtdj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kuxr8"]
 atlas = ExtResource("2_nx0hv")
@@ -19,13 +20,6 @@ region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ssjx5"]
 points = PackedVector2Array(-34, 33, 0, -34, 34, 33)
-
-[sub_resource type="Resource" id="Resource_ovtdj"]
-script = ExtResource("6_dx8pt")
-max_speed = 300.0
-acceleration = 300.0
-friction = 0.0
-metadata/_custom_type_script = "uid://c1ficjv4yuedo"
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dx8pt"]
 points = PackedVector2Array(-32, 32, 0, -32, 32, 32)
@@ -66,11 +60,18 @@ script = ExtResource("2_r52uv")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://blo8u2akdfi12"
 
-[node name="EnemyMovementInput" type="Node" parent="." unique_id=333014799 node_paths=PackedStringArray("actor")]
+[node name="SideToSideMovementInput" type="Node" parent="." unique_id=333014799 node_paths=PackedStringArray("actor")]
 script = ExtResource("5_ssjx5")
 actor = NodePath("..")
-movement_stats = SubResource("Resource_ovtdj")
+movement_stats = ExtResource("7_dx8pt")
 metadata/_custom_type_script = "uid://cusltpl1sylg6"
+
+[node name="MoveVerticallyOnWallInput" type="Node" parent="." unique_id=1353668749 node_paths=PackedStringArray("actor")]
+script = ExtResource("13_ovtdj")
+actor = NodePath("..")
+movement_stats = ExtResource("7_dx8pt")
+movement_time = 10.0
+metadata/_custom_type_script = "uid://dpadanjoouurt"
 
 [node name="FreeOnExit" type="VisibleOnScreenNotifier2D" parent="." unique_id=142007006 node_paths=PackedStringArray("actor")]
 script = ExtResource("3_7iac5")

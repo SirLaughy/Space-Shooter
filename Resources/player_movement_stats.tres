@@ -1,10 +1,7 @@
-[gd_resource type="Resource" script_class="HorizontalMovementStats" format=3 uid="uid://cm1wcq18wypnc"]
+[gd_resource type="Resource" script_class="MovementStats" format=3 uid="uid://cm1wcq18wypnc"]
 
-[ext_resource type="Script" uid="uid://c1ficjv4yuedo" path="res://Scripts/Resources/horizontal_movement_stats.gd" id="1_uc0ob"]
+[ext_resource type="Script" uid="uid://c1ficjv4yuedo" path="res://Scripts/Resources/movement_stats.gd" id="1_uc0ob"]
 
 [resource]
 script = ExtResource("1_uc0ob")
-max_speed = 600.0
-acceleration = 450.0
-friction = 400.0
 metadata/_custom_type_script = "uid://c1ficjv4yuedo"

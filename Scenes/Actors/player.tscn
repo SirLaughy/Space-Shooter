@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://be3bfh5a5ycw6"]
 
 [ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="1_nikbh"]
-[ext_resource type="Script" uid="uid://b2e1y2vqaoycf" path="res://Scripts/Components/Entity.gd" id="1_wn7ci"]
+[ext_resource type="Script" uid="uid://b2e1y2vqaoycf" path="res://Scripts/Actors/Entity.gd" id="1_wn7ci"]
 [ext_resource type="Script" uid="uid://7661gwcv38wq" path="res://Scripts/Components/hitbox.gd" id="3_borc1"]
-[ext_resource type="Script" uid="uid://vbarsxij1ugt" path="res://Scripts/Components/movement_player_input.gd" id="3_sfcrp"]
+[ext_resource type="Script" uid="uid://vbarsxij1ugt" path="res://Scripts/Components/Movement/movement_player_input.gd" id="3_sfcrp"]
 [ext_resource type="Resource" uid="uid://cm1wcq18wypnc" path="res://Resources/player_movement_stats.tres" id="4_b2ja5"]
-[ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/movement.gd" id="5_tvyim"]
+[ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/Movement/movement.gd" id="5_tvyim"]
 [ext_resource type="PackedScene" uid="uid://ccjj3bwitc1vb" path="res://Scenes/turret.tscn" id="6_sfcrp"]
 [ext_resource type="Resource" uid="uid://chetpf6esir03" path="res://Resources/player_turret_stats.tres" id="7_tvyim"]
 [ext_resource type="Resource" uid="uid://cd5v15aolgsel" path="res://Resources/basic_projectile.tres" id="8_4sjoo"]
@@ -48,7 +48,7 @@ metadata/_custom_type_script = "uid://blo8u2akdfi12"
 [node name="MovementPlayerInput" type="Node" parent="." unique_id=2132936046 node_paths=PackedStringArray("actor") groups=["Player"]]
 script = ExtResource("3_sfcrp")
 actor = NodePath("..")
-horizontal_movement_stats = ExtResource("4_b2ja5")
+movement_stats = ExtResource("4_b2ja5")
 metadata/_custom_type_script = "uid://vbarsxij1ugt"
 
 [node name="Turret" parent="." unique_id=1641285429 instance=ExtResource("6_sfcrp")]

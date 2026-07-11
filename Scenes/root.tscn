@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ctlfuh6hsiyko"]
 
 [ext_resource type="Script" uid="uid://c4i4tiiie6qn3" path="res://Scripts/root.gd" id="1_vnucn"]
+[ext_resource type="PackedScene" uid="uid://hh2oe7u8dysv" path="res://Scripts/Actors/asteroid.tscn" id="2_ckhy6"]
 [ext_resource type="Script" uid="uid://bamaqkbavglaw" path="res://Scripts/spawn_manager.gd" id="2_vnucn"]
 [ext_resource type="Script" uid="uid://b7xafeauqkjkp" path="res://Scripts/Managers/death_manager.gd" id="3_4g5cr"]
 [ext_resource type="PackedScene" uid="uid://be3bfh5a5ycw6" path="res://Scenes/Actors/player.tscn" id="4_4g5cr"]
@@ -15,6 +16,9 @@ size = Vector2(22.75, 1262)
 [node name="Root" type="Node2D" unique_id=1123869047]
 script = ExtResource("1_vnucn")
 vertical_speed = 50.0
+
+[node name="Asteroid" parent="." unique_id=924629090 instance=ExtResource("2_ckhy6")]
+position = Vector2(110, 159)
 
 [node name="SpawnManager" type="Node2D" parent="." unique_id=1542563545]
 script = ExtResource("2_vnucn")

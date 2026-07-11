@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ccjj3bwitc1vb"]
 
-[ext_resource type="Script" uid="uid://dnqkxtipqtttt" path="res://Scripts/Components/turret.gd" id="1_fcprl"]
+[ext_resource type="Script" uid="uid://dnqkxtipqtttt" path="res://Scripts/Actors/turret.gd" id="1_fcprl"]
 [ext_resource type="Script" uid="uid://dfffshx385ra5" path="res://Scripts/Components/reload_timer.gd" id="4_ahfaj"]
 [ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="4_pulj5"]
 

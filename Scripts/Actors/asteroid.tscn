@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://hh2oe7u8dysv"]
+
+[ext_resource type="Script" uid="uid://b2e1y2vqaoycf" path="res://Scripts/Actors/Entity.gd" id="1_r676c"]
+[ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="2_3uhbt"]
+[ext_resource type="Script" uid="uid://7661gwcv38wq" path="res://Scripts/Components/hitbox.gd" id="3_3dnqh"]
+[ext_resource type="Script" uid="uid://bkchk644uk72" path="res://Scripts/Components/hurt_box.gd" id="4_jjnvw"]
+[ext_resource type="Script" uid="uid://box5qsvrxlwqs" path="res://Scripts/Components/health.gd" id="5_7nq5b"]
+[ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/Movement/movement.gd" id="6_cide7"]
+[ext_resource type="Script" uid="uid://cusltpl1sylg6" path="res://Scripts/Components/Movement/side_to_side_movement_input.gd" id="7_4nd4g"]
+[ext_resource type="Resource" uid="uid://tnr8eif5goo2" path="res://Scripts/Actors/asteroid_movement.tres" id="8_84ot0"]
+[ext_resource type="Script" uid="uid://ccax6q20ipl6i" path="res://Scripts/Components/Movement/simple_vertical_movement_input.gd" id="9_rb6qm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2sqg"]
+atlas = ExtResource("2_3uhbt")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a60hx"]
+radius = 32.06244
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p8e75"]
+radius = 32.01562
+
+[node name="Asteroid" type="CharacterBody2D" unique_id=924629090 groups=["Destructibles"]]
+modulate = Color(0.52471656, 0.2797253, 0, 1)
+rotation = 3.1415927
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_r676c")
+metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=320030357]
+texture = SubResource("AtlasTexture_t2sqg")
+
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=1074682695 node_paths=PackedStringArray("actor", "health")]
+shape = SubResource("CircleShape2D_a60hx")
+script = ExtResource("3_3dnqh")
+actor = NodePath("..")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://7661gwcv38wq"
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=403768436 node_paths=PackedStringArray("actor")]
+script = ExtResource("4_jjnvw")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://bkchk644uk72"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=545011415]
+shape = SubResource("CircleShape2D_p8e75")
+
+[node name="Health" type="Node" parent="." unique_id=1751613196 node_paths=PackedStringArray("actor")]
+script = ExtResource("5_7nq5b")
+actor = NodePath("..")
+max_health = 3.0
+metadata/_custom_type_script = "uid://box5qsvrxlwqs"
+
+[node name="Movement" type="Node" parent="." unique_id=1804595291 node_paths=PackedStringArray("actor")]
+script = ExtResource("6_cide7")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://blo8u2akdfi12"
+
+[node name="SideToSideMovementInput" type="Node" parent="Movement" unique_id=1220381861 node_paths=PackedStringArray("actor")]
+script = ExtResource("7_4nd4g")
+actor = NodePath("../..")
+movement_stats = ExtResource("8_84ot0")
+metadata/_custom_type_script = "uid://cusltpl1sylg6"
+
+[node name="SimpleVerticalMovementInput" type="Node" parent="Movement" unique_id=1893866081 node_paths=PackedStringArray("actor")]
+script = ExtResource("9_rb6qm")
+actor = NodePath("../..")
+movement_stats = ExtResource("8_84ot0")
+metadata/_custom_type_script = "uid://ccax6q20ipl6i"
