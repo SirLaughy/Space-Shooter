@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b7xafeauqkjkp" path="res://Scripts/Managers/death_manager.gd" id="3_4g5cr"]
 [ext_resource type="PackedScene" uid="uid://be3bfh5a5ycw6" path="res://Scenes/Actors/player.tscn" id="4_4g5cr"]
 [ext_resource type="PackedScene" uid="uid://p4gveeem035d" path="res://Scenes/Actors/basic_enemy.tscn" id="4_c3mwy"]
+[ext_resource type="PackedScene" uid="uid://smbk4472658i" path="res://Scenes/Actors/basic_spawner.tscn" id="7_dun2r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3mwy"]
 size = Vector2(250, 1000)
@@ -75,3 +76,6 @@ position = Vector2(271, 921)
 [node name="BasicEnemy" parent="." unique_id=1596659350 instance=ExtResource("4_c3mwy")]
 position = Vector2(265, 58)
 rotation = 3.1415927
+
+[node name="BasicSpawner" parent="." unique_id=1298602776 instance=ExtResource("7_dun2r")]
+position = Vector2(262, -198)

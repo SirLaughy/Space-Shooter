@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://smbk4472658i"]
+
+[ext_resource type="Script" uid="uid://b2e1y2vqaoycf" path="res://Scripts/Actors/Entity.gd" id="1_4gxwl"]
+[ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="2_earuc"]
+[ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/Movement/movement.gd" id="3_efayf"]
+[ext_resource type="Script" uid="uid://cusltpl1sylg6" path="res://Scripts/Components/Movement/side_to_side_movement_input.gd" id="4_wx2ds"]
+[ext_resource type="Resource" uid="uid://cw56qtiybiky2" path="res://Resources/basic_spawner_movement_stats.tres" id="5_earuc"]
+[ext_resource type="Script" uid="uid://y2o6yvmysxmt" path="res://Scripts/Components/spawner_component.gd" id="6_efayf"]
+[ext_resource type="Script" uid="uid://ynnyrgt5ydwx" path="res://Scripts/Resources/packed_scene_array.gd" id="7_oeqcp"]
+[ext_resource type="PackedScene" uid="uid://p4gveeem035d" path="res://Scenes/Actors/basic_enemy.tscn" id="7_wx2ds"]
+[ext_resource type="PackedScene" uid="uid://hh2oe7u8dysv" path="res://Scripts/Actors/asteroid.tscn" id="8_3nk41"]
+[ext_resource type="Script" uid="uid://c4kw2j5ntipui" path="res://Scripts/Components/timer_trigger_component.gd" id="9_7rfj2"]
+[ext_resource type="PackedScene" uid="uid://be3bfh5a5ycw6" path="res://Scenes/Actors/player.tscn" id="10_he3vq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rfj2"]
+atlas = ExtResource("2_earuc")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeqcp"]
+size = Vector2(64, 64)
+
+[sub_resource type="Resource" id="Resource_he3vq"]
+script = ExtResource("7_oeqcp")
+scene_array = Array[PackedScene]([ExtResource("8_3nk41"), ExtResource("7_wx2ds")])
+metadata/_custom_type_script = "uid://ynnyrgt5ydwx"
+
+[sub_resource type="Resource" id="Resource_vnl4q"]
+script = ExtResource("7_oeqcp")
+scene_array = Array[PackedScene]([ExtResource("10_he3vq")])
+metadata/_custom_type_script = "uid://ynnyrgt5ydwx"
+
+[node name="BasicSpawner" type="CharacterBody2D" unique_id=1298602776]
+rotation = 3.1415927
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_4gxwl")
+metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1608699153]
+texture = SubResource("AtlasTexture_7rfj2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=195804630]
+shape = SubResource("RectangleShape2D_oeqcp")
+
+[node name="Movement" type="Node" parent="." unique_id=695012446 node_paths=PackedStringArray("actor")]
+script = ExtResource("3_efayf")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://blo8u2akdfi12"
+
+[node name="SideToSideMovementInput" type="Node" parent="." unique_id=2060700586 node_paths=PackedStringArray("actor")]
+script = ExtResource("4_wx2ds")
+actor = NodePath("..")
+movement_stats = ExtResource("5_earuc")
+metadata/_custom_type_script = "uid://cusltpl1sylg6"
+
+[node name="SpawnerComponent" type="Node" parent="." unique_id=748585780 node_paths=PackedStringArray("actor")]
+script = ExtResource("6_efayf")
+actor = NodePath("..")
+weight_table = Dictionary[int, ExtResource("7_oeqcp")]({
+1: SubResource("Resource_he3vq"),
+11: null,
+21: null,
+31: null,
+41: null,
+51: null,
+61: null,
+71: null,
+81: null,
+91: SubResource("Resource_vnl4q")
+})
+metadata/_custom_type_script = "uid://y2o6yvmysxmt"
+
+[node name="TimerTriggerComponent" type="Node" parent="." unique_id=2015453260 node_paths=PackedStringArray("actor", "spawner_component")]
+script = ExtResource("9_7rfj2")
+actor = NodePath("..")
+spawner_component = NodePath("../SpawnerComponent")
+spawn_timer = 60.0
+metadata/_custom_type_script = "uid://c4kw2j5ntipui"
