@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_6l2ca")
-reload_time = 60.0
+reload_time = 120.0
 summoner_type = 1
 metadata/_custom_type_script = "uid://cvqvyae3m6ich"

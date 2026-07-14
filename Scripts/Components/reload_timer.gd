@@ -3,12 +3,12 @@ extends Timer
 
 @export var actor: Turret
 
-@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
+@onready var visible_on_screen_notifier_2d: VisibleOnScreenEnabler2D = $VisibleOnScreenNotifier2D
+
 
 func _ready() -> void:
 	wait_time = actor.turret_stats.reload_time/60
 	timeout.connect(_on_timeout)
 
 func _on_timeout():
-	if visible_on_screen_notifier_2d.is_on_screen():
-		GlobalSignalBus.summon_projectile.emit(actor.projectile, actor.projectile_stats, actor.get_global_position(), actor.global_rotation, actor.turret_stats.summoner_type)
+	GlobalSignalBus.summon_projectile.emit(actor.projectile, actor.projectile_stats, actor.get_global_position(), actor.global_rotation, actor.turret_stats.summoner_type)

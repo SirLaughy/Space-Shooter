@@ -9,6 +9,11 @@
 [ext_resource type="Script" uid="uid://cusltpl1sylg6" path="res://Scripts/Components/Movement/side_to_side_movement_input.gd" id="7_4nd4g"]
 [ext_resource type="Resource" uid="uid://tnr8eif5goo2" path="res://Scripts/Actors/asteroid_movement.tres" id="8_84ot0"]
 [ext_resource type="Script" uid="uid://ccax6q20ipl6i" path="res://Scripts/Components/Movement/simple_vertical_movement_input.gd" id="9_rb6qm"]
+[ext_resource type="Script" uid="uid://byjaa8gqlho7j" path="res://Scripts/Components/free_on_exit.gd" id="10_jjnvw"]
+[ext_resource type="Script" uid="uid://y2o6yvmysxmt" path="res://Scripts/Components/Spawning/spawner_component.gd" id="11_84ot0"]
+[ext_resource type="Script" uid="uid://ynnyrgt5ydwx" path="res://Scripts/Resources/packed_scene_array.gd" id="12_rb6qm"]
+[ext_resource type="PackedScene" uid="uid://pfy3lsxmseep" path="res://Scenes/Actors/small_asteroid.tscn" id="13_a60hx"]
+[ext_resource type="Script" uid="uid://danuiatb6hgkj" path="res://Scripts/Components/Spawning/death_throws_trigger_component.gd" id="14_p8e75"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t2sqg"]
 atlas = ExtResource("2_3uhbt")
@@ -20,11 +25,16 @@ radius = 32.06244
 [sub_resource type="CircleShape2D" id="CircleShape2D_p8e75"]
 radius = 32.01562
 
+[sub_resource type="Resource" id="Resource_bkb1c"]
+script = ExtResource("12_rb6qm")
+scene_array = Array[PackedScene]([ExtResource("13_a60hx")])
+metadata/_custom_type_script = "uid://ynnyrgt5ydwx"
+
 [node name="Asteroid" type="CharacterBody2D" unique_id=924629090 groups=["Destructibles"]]
 modulate = Color(0.52471656, 0.2797253, 0, 1)
 rotation = 3.1415927
 collision_layer = 8
-collision_mask = 0
+collision_mask = 16
 script = ExtResource("1_r676c")
 metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
 
@@ -41,6 +51,7 @@ metadata/_custom_type_script = "uid://7661gwcv38wq"
 [node name="HurtBox" type="Area2D" parent="." unique_id=403768436 node_paths=PackedStringArray("actor")]
 script = ExtResource("4_jjnvw")
 actor = NodePath("..")
+damage = 2.0
 metadata/_custom_type_script = "uid://bkchk644uk72"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=545011415]
@@ -68,3 +79,23 @@ script = ExtResource("9_rb6qm")
 actor = NodePath("../..")
 movement_stats = ExtResource("8_84ot0")
 metadata/_custom_type_script = "uid://ccax6q20ipl6i"
+
+[node name="FreeOnExit" type="VisibleOnScreenNotifier2D" parent="." unique_id=164079389 node_paths=PackedStringArray("actor")]
+script = ExtResource("10_jjnvw")
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://byjaa8gqlho7j"
+
+[node name="SpawnerComponent" type="Node" parent="." unique_id=1013394384 node_paths=PackedStringArray("actor")]
+script = ExtResource("11_84ot0")
+actor = NodePath("..")
+spawns_per_attempt = 2
+weight_table = Dictionary[int, ExtResource("12_rb6qm")]({
+1: SubResource("Resource_bkb1c")
+})
+metadata/_custom_type_script = "uid://y2o6yvmysxmt"
+
+[node name="DeathThrowsTriggerComponent" type="Node" parent="SpawnerComponent" unique_id=1611987292 node_paths=PackedStringArray("actor", "spawner_component")]
+script = ExtResource("14_p8e75")
+actor = NodePath("../..")
+spawner_component = NodePath("..")
+metadata/_custom_type_script = "uid://danuiatb6hgkj"

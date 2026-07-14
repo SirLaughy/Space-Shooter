@@ -34,6 +34,7 @@ metadata/_custom_type_script = "uid://dgfsuvve28lan"
 
 [node name="BasicEnemy" type="CharacterBody2D" unique_id=1596659350 groups=["Destructibles"]]
 modulate = Color(0.99999994, 0.15909621, 0.99785906, 1)
+rotation = 3.1415927
 collision_layer = 8
 collision_mask = 16
 script = ExtResource("1_rw6qj")

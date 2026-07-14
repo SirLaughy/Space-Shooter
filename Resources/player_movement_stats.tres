@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_uc0ob")
+horizontal_max_speed = 800.0
+horizontal_acceleration = 500.0
 metadata/_custom_type_script = "uid://c1ficjv4yuedo"

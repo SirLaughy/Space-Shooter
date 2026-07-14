@@ -10,4 +10,4 @@ extends Node
 func update_values() -> void:
 	if health <= 0:
 		GlobalSignalBus.entity_died.emit(actor)
-	print(str(actor) + " | " + str(health))
+	print(str(actor.name) + " | " + str(health))

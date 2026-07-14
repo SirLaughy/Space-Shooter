@@ -24,9 +24,9 @@ autostart = true
 script = ExtResource("4_ahfaj")
 actor = NodePath("..")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="ReloadTimer" unique_id=210016995]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="ReloadTimer" unique_id=1551745711]
 position = Vector2(0, -10)
-rect = Rect2(-3, -31, 6, 41)
+rect = Rect2(-3, -17, 6, 27)
 
 [node name="Sprite" type="Node2D" parent="." unique_id=867658667]
 modulate = Color(0.2087101, 0.2087102, 0.2087099, 1)
