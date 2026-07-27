@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://hh2oe7u8dysv" path="res://Scripts/Actors/asteroid.tscn" id="8_3nk41"]
 [ext_resource type="Script" uid="uid://c4kw2j5ntipui" path="res://Scripts/Components/Spawning/timer_trigger_component.gd" id="9_7rfj2"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_he3vq"]
+size = Vector2(64.00001, 63.999996)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rfj2"]
 atlas = ExtResource("2_earuc")
 region = Rect2(256, 0, 64, 64)
@@ -23,12 +26,17 @@ script = ExtResource("7_oeqcp")
 scene_array = Array[PackedScene]([ExtResource("8_3nk41"), ExtResource("7_wx2ds")])
 metadata/_custom_type_script = "uid://ynnyrgt5ydwx"
 
-[node name="BasicSpawner" type="CharacterBody2D" unique_id=1298602776]
+[node name="BasicSpawner" type="CharacterBody2D" unique_id=1298602776 node_paths=PackedStringArray("bounding_box")]
 rotation = 3.1415927
 collision_layer = 8
 collision_mask = 16
 script = ExtResource("1_4gxwl")
+bounding_box = NodePath("BoundingBox")
 metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
+
+[node name="BoundingBox" type="CollisionShape2D" parent="." unique_id=415864500]
+position = Vector2(-9.5367426e-07, 9.536744e-07)
+shape = SubResource("RectangleShape2D_he3vq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1608699153]
 texture = SubResource("AtlasTexture_7rfj2")
@@ -50,7 +58,6 @@ metadata/_custom_type_script = "uid://cusltpl1sylg6"
 [node name="SpawnerComponent" type="Node" parent="." unique_id=748585780 node_paths=PackedStringArray("actor")]
 script = ExtResource("6_efayf")
 actor = NodePath("..")
-spawn_offset = Vector2(0, 64)
 weight_table = Dictionary[int, ExtResource("7_oeqcp")]({
 1: SubResource("Resource_he3vq"),
 11: null,

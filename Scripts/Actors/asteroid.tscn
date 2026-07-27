@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://pfy3lsxmseep" path="res://Scenes/Actors/small_asteroid.tscn" id="13_a60hx"]
 [ext_resource type="Script" uid="uid://danuiatb6hgkj" path="res://Scripts/Components/Spawning/death_throws_trigger_component.gd" id="14_p8e75"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rb6qm"]
+size = Vector2(64.00001, 63.999996)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_t2sqg"]
 atlas = ExtResource("2_3uhbt")
 region = Rect2(128, 0, 64, 64)
@@ -30,13 +33,21 @@ script = ExtResource("12_rb6qm")
 scene_array = Array[PackedScene]([ExtResource("13_a60hx")])
 metadata/_custom_type_script = "uid://ynnyrgt5ydwx"
 
-[node name="Asteroid" type="CharacterBody2D" unique_id=924629090 groups=["Destructibles"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84ot0"]
+size = Vector2(47, 44)
+
+[node name="Asteroid" type="CharacterBody2D" unique_id=924629090 node_paths=PackedStringArray("bounding_box") groups=["Destructibles"]]
 modulate = Color(0.52471656, 0.2797253, 0, 1)
 rotation = 3.1415927
 collision_layer = 8
 collision_mask = 16
 script = ExtResource("1_r676c")
+bounding_box = NodePath("BoundingBox")
 metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
+
+[node name="BoundingBox" type="CollisionShape2D" parent="." unique_id=86227611]
+position = Vector2(-9.5367426e-07, 9.536744e-07)
+shape = SubResource("RectangleShape2D_rb6qm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=320030357]
 texture = SubResource("AtlasTexture_t2sqg")
@@ -85,17 +96,22 @@ script = ExtResource("10_jjnvw")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://byjaa8gqlho7j"
 
-[node name="SpawnerComponent" type="Node" parent="." unique_id=1013394384 node_paths=PackedStringArray("actor")]
+[node name="SpawnerComponent" type="Node" parent="." unique_id=1013394384 node_paths=PackedStringArray("actor", "spawning_area")]
 script = ExtResource("11_84ot0")
 actor = NodePath("..")
-spawns_per_attempt = 2
+spawning_area = NodePath("SpawnArea")
 weight_table = Dictionary[int, ExtResource("12_rb6qm")]({
 1: SubResource("Resource_bkb1c")
 })
 metadata/_custom_type_script = "uid://y2o6yvmysxmt"
 
-[node name="DeathThrowsTriggerComponent" type="Node" parent="SpawnerComponent" unique_id=1611987292 node_paths=PackedStringArray("actor", "spawner_component")]
+[node name="SpawnArea" type="CollisionShape2D" parent="SpawnerComponent" unique_id=159236730]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_84ot0")
+
+[node name="DeathThrowsTriggerComponent" type="Node" parent="SpawnerComponent" unique_id=1611987292 node_paths=PackedStringArray("actor", "spawner_component", "health_component")]
 script = ExtResource("14_p8e75")
 actor = NodePath("../..")
 spawner_component = NodePath("..")
+health_component = NodePath("../../Health")
 metadata/_custom_type_script = "uid://danuiatb6hgkj"

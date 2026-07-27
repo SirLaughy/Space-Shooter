@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_id87p")
 projectile_name = "Basic Projectile"
-speed = 30000.0
+speed = 40000.0
 damage = 1.0
 colour = Color(0.9148223, 0.7881361, 7.70092e-07, 1)
 metadata/_custom_type_script = "uid://dgfsuvve28lan"

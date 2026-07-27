@@ -2,8 +2,10 @@ extends Node
 
 @export var root: Node2D
 
+
 func _ready() -> void:
 	GlobalSignalBus.entity_died.connect(_on_entity_died)
+
 
 func _on_entity_died(entity: Entity) -> void:
 	var groups = entity.get_groups()
@@ -12,5 +14,4 @@ func _on_entity_died(entity: Entity) -> void:
 	if groups.has("Player"):
 		get_tree().reload_current_scene()
 	elif groups.has("Destructibles"):
-		root.score += 1
 		entity.queue_free()

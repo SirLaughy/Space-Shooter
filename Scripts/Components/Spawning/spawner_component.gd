@@ -2,14 +2,24 @@ class_name SpawnerComponent
 extends Node
 
 @export var actor: Entity
-@export var spawns_per_attempt: int = 1
-@export var spawn_offset: Vector2 = Vector2(0 , 0)
+@export var spawn_quantity_range: Vector2 = Vector2(1 , 1)
+@export var spawning_area: CollisionShape2D
 @export var weight_table: Dictionary[int, PackedSceneArray]
 
-func spawn() -> void:
-	for n in spawns_per_attempt:
+var to_be_spawned: Array[PackedScene]
+var sizes: Array[Vector2]
+
+func queue_spawns() -> void:
+	var spawn_quantity = randi_range(spawn_quantity_range.x, spawn_quantity_range.y)
+	for n in spawn_quantity:
 		var entity = get_entity(get_rarity_table())
-		GlobalSignalBus.summon_enemy.emit(entity, actor.global_position, spawn_offset)
+		sizes.push_back(entity.get_size())
+		to_be_spawned.push_back(entity)
+	spawn()
+
+func spawn() -> void:
+	var spawn_locations: Array[Vector2]
+	
 
 func get_rarity_table() -> PackedSceneArray:
 	var generated_number = randi_range(1,100)

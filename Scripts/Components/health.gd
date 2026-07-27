@@ -9,5 +9,5 @@ extends Node
 
 func update_values() -> void:
 	if health <= 0:
-		GlobalSignalBus.entity_died.emit(actor)
+		actor.check_defer = true
 	print(str(actor.name) + " | " + str(health))

@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_g1ls4")
-reload_time = 60.0
+reload_time = 45.0
 metadata/_custom_type_script = "uid://cvqvyae3m6ich"

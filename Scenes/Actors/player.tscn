@@ -11,6 +11,9 @@
 [ext_resource type="Resource" uid="uid://cd5v15aolgsel" path="res://Resources/basic_projectile.tres" id="8_4sjoo"]
 [ext_resource type="Script" uid="uid://box5qsvrxlwqs" path="res://Scripts/Components/health.gd" id="9_4sjoo"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_borc1"]
+size = Vector2(65, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xdo8"]
 atlas = ExtResource("1_nikbh")
 region = Rect2(0, 0, 64, 64)
@@ -18,11 +21,16 @@ region = Rect2(0, 0, 64, 64)
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_n3dut"]
 points = PackedVector2Array(0, -32, 32, 32, -32, 32)
 
-[node name="Player" type="CharacterBody2D" unique_id=205930645 groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=205930645 node_paths=PackedStringArray("bounding_box") groups=["Player"]]
 modulate = Color(1, 0, 0, 1)
 collision_mask = 16
 script = ExtResource("1_wn7ci")
+bounding_box = NodePath("BoundingBox")
 metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
+
+[node name="BoundingBox" type="CollisionShape2D" parent="." unique_id=1783067722]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_borc1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=858271819]
 texture = SubResource("AtlasTexture_6xdo8")
