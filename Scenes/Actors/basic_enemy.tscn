@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/Movement/movement.gd" id="2_r52uv"]
 [ext_resource type="Script" uid="uid://byjaa8gqlho7j" path="res://Scripts/Components/free_on_exit.gd" id="3_7iac5"]
 [ext_resource type="Script" uid="uid://bkchk644uk72" path="res://Scripts/Components/hurt_box.gd" id="4_cl7dj"]
+[ext_resource type="Script" uid="uid://cey6m51q4hufu" path="res://Scripts/health_label.gd" id="5_rt4wu"]
 [ext_resource type="Script" uid="uid://cusltpl1sylg6" path="res://Scripts/Components/Movement/side_to_side_movement_input.gd" id="5_ssjx5"]
 [ext_resource type="Script" uid="uid://7661gwcv38wq" path="res://Scripts/Components/hitbox.gd" id="5_uspyy"]
 [ext_resource type="PackedScene" uid="uid://ccjj3bwitc1vb" path="res://Scenes/turret.tscn" id="6_nx0hv"]
@@ -13,6 +14,7 @@
 [ext_resource type="Script" uid="uid://dgfsuvve28lan" path="res://Scripts/Resources/projectile_stats.gd" id="8_ssjx5"]
 [ext_resource type="Script" uid="uid://box5qsvrxlwqs" path="res://Scripts/Components/health.gd" id="12_dx8pt"]
 [ext_resource type="Script" uid="uid://dpadanjoouurt" path="res://Scripts/Components/Movement/move_vertically_on_wall_input.gd" id="13_ovtdj"]
+[ext_resource type="Script" uid="uid://dkwsviw2kibyj" path="res://Scripts/Components/drops_component.gd" id="15_yoq6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovtdj"]
 size = Vector2(68, 67)
@@ -44,6 +46,21 @@ script = ExtResource("1_rw6qj")
 bounding_box = NodePath("BoundingBox")
 metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
 
+[node name="HealthLabel" type="Label" parent="." unique_id=640595646 node_paths=PackedStringArray("health_component")]
+offset_left = 34.000008
+offset_top = 55.999996
+offset_right = 74.0
+offset_bottom = 79.0
+rotation = 3.1415927
+script = ExtResource("5_rt4wu")
+health_component = NodePath("../Health")
+
+[node name="Health" type="Node" parent="." unique_id=189556271 node_paths=PackedStringArray("actor")]
+script = ExtResource("12_dx8pt")
+actor = NodePath("..")
+max_health = 3.0
+metadata/_custom_type_script = "uid://box5qsvrxlwqs"
+
 [node name="BoundingBox" type="CollisionShape2D" parent="." unique_id=1227553986]
 position = Vector2(2.9127104e-06, -0.50000286)
 shape = SubResource("RectangleShape2D_ovtdj")
@@ -57,12 +74,6 @@ script = ExtResource("5_uspyy")
 actor = NodePath("..")
 health = NodePath("../Health")
 metadata/_custom_type_script = "uid://7661gwcv38wq"
-
-[node name="Health" type="Node" parent="." unique_id=189556271 node_paths=PackedStringArray("actor")]
-script = ExtResource("12_dx8pt")
-actor = NodePath("..")
-max_health = 3.0
-metadata/_custom_type_script = "uid://box5qsvrxlwqs"
 
 [node name="Movement" type="Node" parent="." unique_id=685244527 node_paths=PackedStringArray("actor")]
 script = ExtResource("2_r52uv")
@@ -100,3 +111,9 @@ shape = SubResource("ConvexPolygonShape2D_dx8pt")
 position = Vector2(0, 14)
 turret_stats = ExtResource("7_kuxr8")
 projectile_stats = SubResource("Resource_dx8pt")
+
+[node name="DropsComponent" type="Node" parent="." unique_id=1385979879 node_paths=PackedStringArray("health_component")]
+script = ExtResource("15_yoq6l")
+health_component = NodePath("../Health")
+money = 2.0
+metadata/_custom_type_script = "uid://dkwsviw2kibyj"

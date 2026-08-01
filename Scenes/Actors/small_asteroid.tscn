@@ -4,12 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="2_6wdfx"]
 [ext_resource type="Script" uid="uid://7661gwcv38wq" path="res://Scripts/Components/hitbox.gd" id="3_1ehkt"]
 [ext_resource type="Script" uid="uid://box5qsvrxlwqs" path="res://Scripts/Components/health.gd" id="4_d38hx"]
+[ext_resource type="Script" uid="uid://cey6m51q4hufu" path="res://Scripts/health_label.gd" id="5_d38hx"]
 [ext_resource type="Script" uid="uid://bkchk644uk72" path="res://Scripts/Components/hurt_box.gd" id="5_h70rf"]
 [ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/Movement/movement.gd" id="6_gwm71"]
 [ext_resource type="Script" uid="uid://cusltpl1sylg6" path="res://Scripts/Components/Movement/side_to_side_movement_input.gd" id="7_xbm60"]
 [ext_resource type="Resource" uid="uid://c0qbxlnqj2ucw" path="res://Resources/small_asteroid_movement_stats.tres" id="8_1ehkt"]
 [ext_resource type="Script" uid="uid://ccax6q20ipl6i" path="res://Scripts/Components/Movement/simple_vertical_movement_input.gd" id="9_bt1xp"]
 [ext_resource type="Script" uid="uid://byjaa8gqlho7j" path="res://Scripts/Components/free_on_exit.gd" id="10_d38hx"]
+[ext_resource type="Script" uid="uid://dkwsviw2kibyj" path="res://Scripts/Components/drops_component.gd" id="12_h70rf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fy3wv"]
 atlas = ExtResource("2_6wdfx")
@@ -18,6 +20,8 @@ region = Rect2(128, 0, 64, 64)
 [sub_resource type="CircleShape2D" id="CircleShape2D_fw7wq"]
 radius = 11.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h70rf"]
+
 [node name="SmallAsteroid" type="CharacterBody2D" unique_id=58826284 groups=["Destructibles"]]
 modulate = Color(0.39622337, 0.3195875, 0.2549796, 1)
 rotation = 3.1415927
@@ -25,6 +29,21 @@ collision_layer = 8
 collision_mask = 16
 script = ExtResource("1_squx8")
 metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
+
+[node name="Health" type="Node" parent="." unique_id=1996063799 node_paths=PackedStringArray("actor")]
+script = ExtResource("4_d38hx")
+actor = NodePath("..")
+max_health = 1.0
+metadata/_custom_type_script = "uid://box5qsvrxlwqs"
+
+[node name="HealthLabel" type="Label" parent="." unique_id=4771362 node_paths=PackedStringArray("health_component")]
+offset_left = 27.000002
+offset_top = 25.999998
+offset_right = 67.0
+offset_bottom = 49.0
+rotation = 3.1415927
+script = ExtResource("5_d38hx")
+health_component = NodePath("../Health")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=403498433]
 scale = Vector2(0.33, 0.33)
@@ -37,16 +56,13 @@ actor = NodePath("..")
 health = NodePath("../Health")
 metadata/_custom_type_script = "uid://7661gwcv38wq"
 
-[node name="Health" type="Node" parent="." unique_id=1996063799 node_paths=PackedStringArray("actor")]
-script = ExtResource("4_d38hx")
-actor = NodePath("..")
-max_health = 1.0
-metadata/_custom_type_script = "uid://box5qsvrxlwqs"
-
 [node name="HurtBox" type="Area2D" parent="." unique_id=293391471 node_paths=PackedStringArray("actor")]
 script = ExtResource("5_h70rf")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bkchk644uk72"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=846718665]
+shape = SubResource("CircleShape2D_h70rf")
 
 [node name="Movement" type="Node" parent="." unique_id=885376643 node_paths=PackedStringArray("actor")]
 script = ExtResource("6_gwm71")
@@ -71,3 +87,9 @@ rect = Rect2(-7.6555595, -9.687408, 7.4963217, 7.4963274)
 script = ExtResource("10_d38hx")
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://byjaa8gqlho7j"
+
+[node name="DropsComponent" type="Node" parent="." unique_id=382596945 node_paths=PackedStringArray("health_component")]
+script = ExtResource("12_h70rf")
+health_component = NodePath("../Health")
+money = 0.25
+metadata/_custom_type_script = "uid://dkwsviw2kibyj"

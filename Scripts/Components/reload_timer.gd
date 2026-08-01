@@ -3,8 +3,6 @@ extends Timer
 
 @export var actor: Turret
 
-@onready var visible_on_screen_notifier_2d: VisibleOnScreenEnabler2D = $VisibleOnScreenNotifier2D
-
 
 func _ready() -> void:
 	wait_time = actor.turret_stats.reload_time/60

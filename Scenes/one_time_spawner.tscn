@@ -4,95 +4,28 @@
 [ext_resource type="Script" uid="uid://y2o6yvmysxmt" path="res://Scripts/Components/Spawning/spawner_component.gd" id="2_okm1e"]
 [ext_resource type="Script" uid="uid://ynnyrgt5ydwx" path="res://Scripts/Resources/packed_scene_array.gd" id="3_1iu2h"]
 [ext_resource type="Script" uid="uid://cmpt08hxp7f5e" path="res://Scripts/Components/Spawning/one_time_trigger_component.gd" id="3_d5mtv"]
-[ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="4_emasa"]
-[ext_resource type="Script" uid="uid://7661gwcv38wq" path="res://Scripts/Components/hitbox.gd" id="5_1s446"]
-[ext_resource type="Script" uid="uid://bkchk644uk72" path="res://Scripts/Components/hurt_box.gd" id="6_pe654"]
-[ext_resource type="Script" uid="uid://box5qsvrxlwqs" path="res://Scripts/Components/health.gd" id="7_usn8x"]
-[ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/Movement/movement.gd" id="8_f8233"]
-[ext_resource type="Script" uid="uid://cusltpl1sylg6" path="res://Scripts/Components/Movement/side_to_side_movement_input.gd" id="9_la8pn"]
-[ext_resource type="Resource" uid="uid://tnr8eif5goo2" path="res://Scripts/Actors/asteroid_movement.tres" id="10_rt1ev"]
-[ext_resource type="Script" uid="uid://ccax6q20ipl6i" path="res://Scripts/Components/Movement/simple_vertical_movement_input.gd" id="11_4s4iu"]
-[ext_resource type="Resource" uid="uid://dbyfa3qcc43bj" path="res://Resources/basic_enemy_movement_stats.tres" id="12_becmv"]
-[ext_resource type="Script" uid="uid://dpadanjoouurt" path="res://Scripts/Components/Movement/move_vertically_on_wall_input.gd" id="13_p45f7"]
-[ext_resource type="Script" uid="uid://byjaa8gqlho7j" path="res://Scripts/Components/free_on_exit.gd" id="14_p6mb7"]
-[ext_resource type="PackedScene" uid="uid://ccjj3bwitc1vb" path="res://Scenes/turret.tscn" id="15_mamtw"]
-[ext_resource type="Resource" uid="uid://copgdb6f2xj4a" path="res://Resources/basic_enemy_turret_stats.tres" id="16_i2pgw"]
-[ext_resource type="Script" uid="uid://dgfsuvve28lan" path="res://Scripts/Resources/projectile_stats.gd" id="17_k4xm2"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t2sqg"]
-atlas = ExtResource("4_emasa")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_a60hx"]
-radius = 32.06244
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_p8e75"]
-radius = 32.01562
-
-[sub_resource type="PackedScene" id="PackedScene_24gc1"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"id_paths": [],
-"names": PackedStringArray("Asteroid", "modulate", "rotation", "collision_layer", "collision_mask", "script", "metadata/_custom_type_script", "Destructibles", "CharacterBody2D", "Sprite2D", "texture", "HitBox", "shape", "actor", "health", "CollisionShape2D", "HurtBox", "Area2D", "Health", "max_health", "Node", "Movement", "SideToSideMovementInput", "movement_stats", "SimpleVerticalMovementInput"),
-"node_count": 9,
-"node_ids": PackedInt32Array(924629090, 320030357, 1074682695, 403768436, 545011415, 1751613196, 1804595291, 1220381861, 1893866081),
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 8, 0, -1, 6, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 1, 7, 0, 0, 9, 9, -1, 1, 10, 6, 0, 0, 0, 15, 11, -1, 5, 12, 7, 5, 8, 1073741837, 9, 1073741838, 10, 6, 11, 0, 0, 0, 17, 16, -1, 3, 5, 12, 1073741837, 9, 6, 13, 0, 3, 0, 15, 15, -1, 1, 12, 14, 0, 0, 0, 20, 18, -1, 4, 5, 15, 1073741837, 9, 19, 16, 6, 17, 0, 0, 0, 20, 21, -1, 3, 5, 18, 1073741837, 9, 6, 19, 0, 6, 0, 20, 22, -1, 4, 5, 20, 1073741837, 21, 23, 22, 6, 23, 0, 6, 0, 20, 24, -1, 4, 5, 24, 1073741837, 21, 23, 22, 6, 25, 0),
-"variants": [Color(0.52471656, 0.2797253, 0, 1), 3.1415927, 8, 16, ExtResource("1_b224i"), "uid://b2e1y2vqaoycf", SubResource("AtlasTexture_t2sqg"), SubResource("CircleShape2D_a60hx"), ExtResource("5_1s446"), NodePath(".."), NodePath("../Health"), "uid://7661gwcv38wq", ExtResource("6_pe654"), "uid://bkchk644uk72", SubResource("CircleShape2D_p8e75"), ExtResource("7_usn8x"), 3.0, "uid://box5qsvrxlwqs", ExtResource("8_f8233"), "uid://blo8u2akdfi12", ExtResource("9_la8pn"), NodePath("../.."), ExtResource("10_rt1ev"), "uid://cusltpl1sylg6", ExtResource("11_4s4iu"), "uid://ccax6q20ipl6i"],
-"version": 3
-}
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kuxr8"]
-atlas = ExtResource("4_emasa")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ssjx5"]
-points = PackedVector2Array(-34, 33, 0, -34, 34, 33)
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dx8pt"]
-points = PackedVector2Array(-32, 32, 0, -32, 32, 32)
-
-[sub_resource type="Resource" id="Resource_dx8pt"]
-script = ExtResource("17_k4xm2")
-projectile_name = "Basic Projectile"
-speed = 30000.0
-damage = 1.0
-colour = Color(0, 0.7882353, 0, 1)
-metadata/_custom_type_script = "uid://dgfsuvve28lan"
-
-[sub_resource type="PackedScene" id="PackedScene_glhpv"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"id_paths": [],
-"names": PackedStringArray("BasicEnemy", "modulate", "rotation", "collision_layer", "collision_mask", "script", "metadata/_custom_type_script", "Destructibles", "CharacterBody2D", "Sprite2D", "texture", "HitBox", "shape", "actor", "health", "CollisionShape2D", "Health", "max_health", "Node", "Movement", "SideToSideMovementInput", "movement_stats", "MoveVerticallyOnWallInput", "movement_time", "FreeOnExit", "VisibleOnScreenNotifier2D", "HurtBox", "Area2D", "Turret", "position", "turret_stats", "projectile_stats"),
-"node_count": 11,
-"node_ids": PackedInt32Array(1596659350, 431311158, 1593397725, 189556271, 685244527, 333014799, 1353668749, 142007006, 1446782888, 1205664930, 1641285429),
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 8, 0, -1, 6, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 1, 7, 0, 0, 9, 9, -1, 1, 10, 6, 0, 0, 0, 15, 11, -1, 5, 12, 7, 5, 8, 1073741837, 9, 1073741838, 10, 6, 11, 0, 0, 0, 18, 16, -1, 4, 5, 12, 1073741837, 9, 17, 13, 6, 14, 0, 0, 0, 18, 19, -1, 3, 5, 15, 1073741837, 9, 6, 16, 0, 0, 0, 18, 20, -1, 4, 5, 17, 1073741837, 9, 21, 18, 6, 19, 0, 0, 0, 18, 22, -1, 5, 5, 20, 1073741837, 9, 21, 18, 23, 21, 6, 22, 0, 0, 0, 25, 24, -1, 3, 5, 23, 1073741837, 9, 6, 24, 0, 0, 0, 27, 26, -1, 4, 3, 2, 5, 25, 1073741837, 9, 6, 26, 0, 8, 0, 15, 15, -1, 1, 12, 27, 0, 0, 0, 2147483647, 28, 28, 3, 29, 29, 30, 30, 31, 31, 0),
-"variants": [Color(0.99999994, 0.15909621, 0.99785906, 1), 3.1415927, 8, 16, ExtResource("1_b224i"), "uid://b2e1y2vqaoycf", SubResource("AtlasTexture_kuxr8"), SubResource("ConvexPolygonShape2D_ssjx5"), ExtResource("5_1s446"), NodePath(".."), NodePath("../Health"), "uid://7661gwcv38wq", ExtResource("7_usn8x"), 3.0, "uid://box5qsvrxlwqs", ExtResource("8_f8233"), "uid://blo8u2akdfi12", ExtResource("9_la8pn"), ExtResource("12_becmv"), "uid://cusltpl1sylg6", ExtResource("13_p45f7"), 10.0, "uid://dpadanjoouurt", ExtResource("14_p6mb7"), "uid://byjaa8gqlho7j", ExtResource("6_pe654"), "uid://bkchk644uk72", SubResource("ConvexPolygonShape2D_dx8pt"), ExtResource("15_mamtw"), Vector2(0, 14), ExtResource("16_i2pgw"), SubResource("Resource_dx8pt")],
-"version": 3
-}
+[ext_resource type="PackedScene" uid="uid://p4gveeem035d" path="res://Scenes/Actors/basic_enemy.tscn" id="4_1iu2h"]
+[ext_resource type="PackedScene" uid="uid://hh2oe7u8dysv" path="res://Scripts/Actors/asteroid.tscn" id="5_2daj1"]
 
 [sub_resource type="Resource" id="Resource_j75ds"]
 script = ExtResource("3_1iu2h")
-scene_array = Array[PackedScene]([SubResource("PackedScene_24gc1"), SubResource("PackedScene_glhpv")])
+scene_array = Array[PackedScene]([ExtResource("4_1iu2h"), ExtResource("5_2daj1")])
 metadata/_custom_type_script = "uid://ynnyrgt5ydwx"
 
 [node name="OneTimeSpawner" type="CharacterBody2D" unique_id=1280051317]
 script = ExtResource("1_b224i")
 metadata/_custom_type_script = "uid://b2e1y2vqaoycf"
 
-[node name="SpawnerComponent" type="Node" parent="." unique_id=361872504 node_paths=PackedStringArray("actor")]
+[node name="SpawnerComponent" type="Node" parent="." unique_id=361872504 node_paths=PackedStringArray("actor", "spawning_points")]
 script = ExtResource("2_okm1e")
 actor = NodePath("..")
+spawning_points = [NodePath("../SpawnMarker2D")]
 weight_table = Dictionary[int, ExtResource("3_1iu2h")]({
 1: SubResource("Resource_j75ds")
 })
 metadata/_custom_type_script = "uid://y2o6yvmysxmt"
+
+[node name="SpawnMarker2D" type="Marker2D" parent="." unique_id=2004526930]
 
 [node name="OneTimeTriggerComponent" type="Node" parent="." unique_id=1096260415 node_paths=PackedStringArray("actor", "spawner_component")]
 script = ExtResource("3_d5mtv")

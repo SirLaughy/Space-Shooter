@@ -55,9 +55,10 @@ actor = NodePath("..")
 movement_stats = ExtResource("5_earuc")
 metadata/_custom_type_script = "uid://cusltpl1sylg6"
 
-[node name="SpawnerComponent" type="Node" parent="." unique_id=748585780 node_paths=PackedStringArray("actor")]
+[node name="SpawnerComponent" type="Node" parent="." unique_id=748585780 node_paths=PackedStringArray("actor", "spawning_points")]
 script = ExtResource("6_efayf")
 actor = NodePath("..")
+spawning_points = [NodePath("../SpawnMarker2D")]
 weight_table = Dictionary[int, ExtResource("7_oeqcp")]({
 1: SubResource("Resource_he3vq"),
 11: null,
@@ -72,9 +73,14 @@ weight_table = Dictionary[int, ExtResource("7_oeqcp")]({
 })
 metadata/_custom_type_script = "uid://y2o6yvmysxmt"
 
-[node name="TimerTriggerComponent" type="Node" parent="." unique_id=2015453260 node_paths=PackedStringArray("actor", "spawner_component")]
+[node name="TimerTriggerComponent" type="Node" parent="SpawnerComponent" unique_id=2015453260 node_paths=PackedStringArray("actor", "spawner_component")]
 script = ExtResource("9_7rfj2")
-actor = NodePath("..")
-spawner_component = NodePath("../SpawnerComponent")
-spawn_timer = 300.0
+actor = NodePath("../..")
+spawner_component = NodePath("..")
+spawn_timer_range = Vector2(180, 300)
 metadata/_custom_type_script = "uid://c4kw2j5ntipui"
+
+[node name="SpawnMarker2D" type="Marker2D" parent="." unique_id=632388235]
+position = Vector2(-8.8297e-06, -101)
+rotation = 3.1415925
+gizmo_extents = 64.0
