@@ -12,12 +12,13 @@ extends Node
 
 # Determines the amount of enemies to spawn based on the spawn_quantity_range and sends the determined entity and spawning marker to the spawn manager, called by trigger component
 func spawn() -> void:
-	var spawn_quantity = randi_range(spawn_quantity_range.x, spawn_quantity_range.y) # determine spawn quantity
-	var markers = spawning_points.duplicate() # duplicate the array of spawning markers to allow to only choose each location a maximum of one time
-	for n in spawn_quantity: #loop through for amount of spawns and send the chosen entity and spawning location to spawn manager
-		var entity = get_entity(get_rarity_table())
-		var marker = markers.pop_at(randi_range(0, markers.size() - 1)) # remove each selected marker from the array to ensure each marker can only be selected once per spawn cycle
-		GlobalSignalBus.summon_enemy.emit(entity, marker.global_position)
+	if actor.ticking:
+		var spawn_quantity = randi_range(spawn_quantity_range.x, spawn_quantity_range.y) # determine spawn quantity
+		var markers = spawning_points.duplicate() # duplicate the array of spawning markers to allow to only choose each location a maximum of one time
+		for n in spawn_quantity: #loop through for amount of spawns and send the chosen entity and spawning location to spawn manager
+			var entity = get_entity(get_rarity_table())
+			var marker = markers.pop_at(randi_range(0, markers.size() - 1)) # remove each selected marker from the array to ensure each marker can only be selected once per spawn cycle
+			GlobalSignalBus.summon_enemy.emit(entity, marker.global_position)
 
 # use the weights provided in the weight table to randomly select the entity array to choose an entity from
 func get_rarity_table() -> PackedSceneArray:

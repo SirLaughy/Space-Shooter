@@ -10,6 +10,6 @@ func _ready() -> void:
 func _on_entity_died(entity: Entity) -> void:
 	var groups = entity.get_groups()
 	if groups.has("Player"):
-		get_tree().reload_current_scene()
+		root.die()
 	elif groups.has("Destructibles"):
 		entity.queue_free()

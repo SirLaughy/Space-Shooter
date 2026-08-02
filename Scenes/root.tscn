@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ctlfuh6hsiyko"]
 
 [ext_resource type="Script" uid="uid://c4i4tiiie6qn3" path="res://Scripts/root.gd" id="1_vnucn"]
+[ext_resource type="Script" uid="uid://k82gy1i47upe" path="res://Scripts/game_timer.gd" id="2_qtxxq"]
 [ext_resource type="Script" uid="uid://bamaqkbavglaw" path="res://Scripts/Managers/spawn_manager.gd" id="2_vnucn"]
 [ext_resource type="Script" uid="uid://b7xafeauqkjkp" path="res://Scripts/Managers/death_manager.gd" id="3_4g5cr"]
 [ext_resource type="PackedScene" uid="uid://be3bfh5a5ycw6" path="res://Scenes/Actors/player.tscn" id="4_4g5cr"]
@@ -24,6 +25,30 @@ size = Vector2(534, 90)
 [node name="Root" type="Node2D" unique_id=1123869047]
 script = ExtResource("1_vnucn")
 vertical_speed = 50.0
+
+[node name="GameTimer" type="Timer" parent="." unique_id=1161748456]
+autostart = true
+script = ExtResource("2_qtxxq")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1945069087]
+
+[node name="Label" type="Label" parent="HUD" unique_id=1468874626]
+offset_left = 4.0
+offset_top = 932.0
+offset_right = 70.0
+offset_bottom = 956.0
+
+[node name="EndScoreLabel" type="Label" parent="HUD" unique_id=837479139]
+visible = false
+offset_left = 47.0
+offset_top = 317.0
+offset_right = 493.0
+offset_bottom = 585.0
+theme_override_font_sizes/font_size = 64
+text = "money: $35.40"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="SpawnManager" type="Node2D" parent="." unique_id=1542563545]
 script = ExtResource("2_vnucn")
@@ -61,14 +86,6 @@ shape = SubResource("RectangleShape2D_vnucn")
 position = Vector2(549, 542)
 shape = SubResource("RectangleShape2D_vnucn")
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=1945069087]
-
-[node name="Label" type="Label" parent="HUD" unique_id=1468874626]
-offset_left = 4.0
-offset_top = 932.0
-offset_right = 70.0
-offset_bottom = 956.0
-
 [node name="PlayerNew" parent="." unique_id=205930645 instance=ExtResource("4_4g5cr")]
 position = Vector2(271, 921)
 
@@ -99,4 +116,5 @@ shape = SubResource("RectangleShape2D_r3lo5")
 position = Vector2(270, 1278)
 shape = SubResource("RectangleShape2D_qtxxq")
 
+[connection signal="timeout" from="GameTimer" to="GameTimer" method="_on_timeout"]
 [connection signal="body_entered" from="EndZone" to="EndZone" method="_on_body_entered"]

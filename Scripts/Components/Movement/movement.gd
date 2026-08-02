@@ -9,4 +9,5 @@ func _ready() -> void:
 	actor.motion_mode = actor.MOTION_MODE_FLOATING
 
 func _physics_process(delta: float) -> void:
-	actor.move_and_slide()
+	if actor.ticking:
+		actor.move_and_slide()

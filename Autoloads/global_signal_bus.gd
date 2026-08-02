@@ -10,3 +10,7 @@ signal summon_entity(scene: PackedScene, location: Vector2)
 # Enemy Signals
 signal summon_enemy()
 signal drops_dropped(money: float, items: Array)
+
+# Manager Signals
+signal pause_gameplay()
+signal start_gameplay()

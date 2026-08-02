@@ -11,8 +11,13 @@ extends CharacterBody2D
 var facing_direction: Vector2
 var signal_defer_frame = false
 var check_defer = false # called by health module upon reaching 0 health
+var ticking: bool = true # whether to be ticking
 
 ### BUILT-IN FUNCTIONS
+
+func _ready() -> void:
+	GlobalSignalBus.start_gameplay.connect(_on_start_gameplay)
+	GlobalSignalBus.pause_gameplay.connect(_on_pause_gameplay)
 
 func _process(delta: float) -> void:                                        
 	facing_direction = get_direction()
@@ -40,3 +45,12 @@ func defer_signal() -> void:
 # Returns the size of the entity bounding box
 func get_size() -> Vector2:
 	return bounding_box.shape.size
+	
+
+### SIGNAL CONNECTIONS
+
+func _on_start_gameplay():
+	ticking = true
+
+func _on_pause_gameplay():
+	ticking = false
