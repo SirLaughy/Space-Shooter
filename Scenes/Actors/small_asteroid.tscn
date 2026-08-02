@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://cusltpl1sylg6" path="res://Scripts/Components/Movement/side_to_side_movement_input.gd" id="7_xbm60"]
 [ext_resource type="Resource" uid="uid://c0qbxlnqj2ucw" path="res://Resources/small_asteroid_movement_stats.tres" id="8_1ehkt"]
 [ext_resource type="Script" uid="uid://ccax6q20ipl6i" path="res://Scripts/Components/Movement/simple_vertical_movement_input.gd" id="9_bt1xp"]
-[ext_resource type="Script" uid="uid://byjaa8gqlho7j" path="res://Scripts/Components/free_on_exit.gd" id="10_d38hx"]
 [ext_resource type="Script" uid="uid://dkwsviw2kibyj" path="res://Scripts/Components/drops_component.gd" id="12_h70rf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fy3wv"]
@@ -80,13 +79,6 @@ script = ExtResource("9_bt1xp")
 actor = NodePath("..")
 movement_stats = ExtResource("8_1ehkt")
 metadata/_custom_type_script = "uid://ccax6q20ipl6i"
-
-[node name="FreeOnExit" type="VisibleOnScreenNotifier2D" parent="." unique_id=1931858069 node_paths=PackedStringArray("actor")]
-position = Vector2(4.0000005, 5.9999995)
-rect = Rect2(-7.6555595, -9.687408, 7.4963217, 7.4963274)
-script = ExtResource("10_d38hx")
-actor = NodePath("..")
-metadata/_custom_type_script = "uid://byjaa8gqlho7j"
 
 [node name="DropsComponent" type="Node" parent="." unique_id=382596945 node_paths=PackedStringArray("health_component")]
 script = ExtResource("12_h70rf")

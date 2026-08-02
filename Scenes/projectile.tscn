@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cqjmeqr8n2lgx" path="res://Scripts/Actors/projectile.gd" id="1_rsyq6"]
 [ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="2_yr2qt"]
-[ext_resource type="Script" uid="uid://byjaa8gqlho7j" path="res://Scripts/Components/free_on_exit.gd" id="3_tl4hk"]
 [ext_resource type="Script" uid="uid://4c64x2s8e5tr" path="res://Scripts/Components/Movement/projectile_movement.gd" id="6_cgh1o"]
 [ext_resource type="Script" uid="uid://dxp1434xbslk7" path="res://Scripts/label.gd" id="6_cu5m1"]
 [ext_resource type="Script" uid="uid://bkchk644uk72" path="res://Scripts/Components/hurt_box.gd" id="7_cu5m1"]
@@ -31,11 +30,6 @@ shape = SubResource("RectangleShape2D_cgh1o")
 
 [node name="ProjectileSprite" type="Sprite2D" parent="." unique_id=2013167737]
 texture = SubResource("AtlasTexture_tl4hk")
-
-[node name="FreeOnExit" type="VisibleOnScreenNotifier2D" parent="." unique_id=13713890 node_paths=PackedStringArray("actor")]
-script = ExtResource("3_tl4hk")
-actor = NodePath("..")
-metadata/_custom_type_script = "uid://byjaa8gqlho7j"
 
 [node name="ProjectileMovement" type="Node" parent="." unique_id=646664162 node_paths=PackedStringArray("actor")]
 script = ExtResource("6_cgh1o")

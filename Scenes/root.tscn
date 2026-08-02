@@ -7,12 +7,19 @@
 [ext_resource type="Script" uid="uid://b4t7xkavecyus" path="res://Scripts/Managers/inventory_manager.gd" id="4_dun2r"]
 [ext_resource type="PackedScene" uid="uid://cou1jnf3l7lt6" path="res://Scenes/one_time_spawner.tscn" id="6_ckhy6"]
 [ext_resource type="PackedScene" uid="uid://smbk4472658i" path="res://Scenes/Actors/basic_spawner.tscn" id="7_dun2r"]
+[ext_resource type="Script" uid="uid://dagpve7rks57j" path="res://Scripts/end_zone.gd" id="8_r3lo5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3mwy"]
 size = Vector2(250, 1000)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnucn"]
-size = Vector2(22.75, 1262)
+size = Vector2(22.75, 1663)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3lo5"]
+size = Vector2(534, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtxxq"]
+size = Vector2(534, 90)
 
 [node name="Root" type="Node2D" unique_id=1123869047]
 script = ExtResource("1_vnucn")
@@ -47,11 +54,11 @@ collision_layer = 16
 collision_mask = 11
 
 [node name="CollisionShape2D_left" type="CollisionShape2D" parent="Walls" unique_id=849977564]
-position = Vector2(-9, 342)
+position = Vector2(-9, 542.5)
 shape = SubResource("RectangleShape2D_vnucn")
 
 [node name="CollisionShape2D_left2" type="CollisionShape2D" parent="Walls" unique_id=1341654970]
-position = Vector2(549, 344)
+position = Vector2(549, 542)
 shape = SubResource("RectangleShape2D_vnucn")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1945069087]
@@ -78,3 +85,18 @@ position = Vector2(457, 293)
 
 [node name="OneTimeSpawner3" parent="OneTimeSpawners" unique_id=278916971 instance=ExtResource("6_ckhy6")]
 position = Vector2(88, 410)
+
+[node name="EndZone" type="Area2D" parent="." unique_id=1259921274]
+collision_layer = 32
+collision_mask = 14
+script = ExtResource("8_r3lo5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndZone" unique_id=522735045]
+position = Vector2(270, -242.5)
+shape = SubResource("RectangleShape2D_r3lo5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="EndZone" unique_id=78325050]
+position = Vector2(270, 1278)
+shape = SubResource("RectangleShape2D_qtxxq")
+
+[connection signal="body_entered" from="EndZone" to="EndZone" method="_on_body_entered"]

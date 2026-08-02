@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b2e1y2vqaoycf" path="res://Scripts/Actors/Entity.gd" id="1_rw6qj"]
 [ext_resource type="Texture2D" uid="uid://cmron1gvp6nbe" path="res://Assets/Prototype Art/prototype art.svg" id="2_nx0hv"]
 [ext_resource type="Script" uid="uid://blo8u2akdfi12" path="res://Scripts/Components/Movement/movement.gd" id="2_r52uv"]
-[ext_resource type="Script" uid="uid://byjaa8gqlho7j" path="res://Scripts/Components/free_on_exit.gd" id="3_7iac5"]
 [ext_resource type="Script" uid="uid://bkchk644uk72" path="res://Scripts/Components/hurt_box.gd" id="4_cl7dj"]
 [ext_resource type="Script" uid="uid://cey6m51q4hufu" path="res://Scripts/health_label.gd" id="5_rt4wu"]
 [ext_resource type="Script" uid="uid://cusltpl1sylg6" path="res://Scripts/Components/Movement/side_to_side_movement_input.gd" id="5_ssjx5"]
@@ -92,11 +91,6 @@ actor = NodePath("..")
 movement_stats = ExtResource("7_dx8pt")
 movement_time = 10.0
 metadata/_custom_type_script = "uid://dpadanjoouurt"
-
-[node name="FreeOnExit" type="VisibleOnScreenNotifier2D" parent="." unique_id=142007006 node_paths=PackedStringArray("actor")]
-script = ExtResource("3_7iac5")
-actor = NodePath("..")
-metadata/_custom_type_script = "uid://byjaa8gqlho7j"
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1446782888 node_paths=PackedStringArray("actor")]
 collision_layer = 8

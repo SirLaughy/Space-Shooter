@@ -5,9 +5,9 @@ extends Node
 @export var spawner_component: SpawnerComponent
 @export var health_component: Health
 
-var spawned = false
+var dead: bool = false
 
 func _process(delta: float) -> void:
-	if health_component.health <= 0 && !spawned:
+	if health_component.health <= 0 && !dead:
 		spawner_component.spawn()
-		spawned = true
+		dead = true

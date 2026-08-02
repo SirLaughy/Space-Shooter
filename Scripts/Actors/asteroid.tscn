@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://cusltpl1sylg6" path="res://Scripts/Components/Movement/side_to_side_movement_input.gd" id="7_4nd4g"]
 [ext_resource type="Resource" uid="uid://tnr8eif5goo2" path="res://Scripts/Actors/asteroid_movement.tres" id="8_84ot0"]
 [ext_resource type="Script" uid="uid://ccax6q20ipl6i" path="res://Scripts/Components/Movement/simple_vertical_movement_input.gd" id="9_rb6qm"]
-[ext_resource type="Script" uid="uid://byjaa8gqlho7j" path="res://Scripts/Components/free_on_exit.gd" id="10_jjnvw"]
 [ext_resource type="Script" uid="uid://y2o6yvmysxmt" path="res://Scripts/Components/Spawning/spawner_component.gd" id="11_84ot0"]
 [ext_resource type="Script" uid="uid://ynnyrgt5ydwx" path="res://Scripts/Resources/packed_scene_array.gd" id="12_rb6qm"]
 [ext_resource type="PackedScene" uid="uid://pfy3lsxmseep" path="res://Scenes/Actors/small_asteroid.tscn" id="13_a60hx"]
@@ -98,11 +97,6 @@ script = ExtResource("9_rb6qm")
 actor = NodePath("../..")
 movement_stats = ExtResource("8_84ot0")
 metadata/_custom_type_script = "uid://ccax6q20ipl6i"
-
-[node name="FreeOnExit" type="VisibleOnScreenNotifier2D" parent="." unique_id=164079389 node_paths=PackedStringArray("actor")]
-script = ExtResource("10_jjnvw")
-actor = NodePath("..")
-metadata/_custom_type_script = "uid://byjaa8gqlho7j"
 
 [node name="SpawnerComponent" type="Node" parent="." unique_id=1013394384 node_paths=PackedStringArray("actor", "spawning_points")]
 script = ExtResource("11_84ot0")
